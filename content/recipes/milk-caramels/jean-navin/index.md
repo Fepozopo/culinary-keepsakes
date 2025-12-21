@@ -1,7 +1,7 @@
 # Milk Caramels
 
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Michael Navin</span>
+  <span style="font-size: 1.5em; font-weight: bold;">Jean Navin</span>
   <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
 </div>
 
@@ -35,4 +35,4 @@ These milk caramels are a delightful treat that combines the rich, creamy flavor
 
 ### Notes
 
-This "gradual milk" method is an old-fashioned way to keep the caramel light and creamy without scorching the milk solids.
+This "gradual milk" method is an old-fashioned way to keep the caramel light and creamy without scorching the milk solids. When adding milk, it is recommended to use room temperature milk.

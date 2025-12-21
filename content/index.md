@@ -11,10 +11,10 @@ This is a collection of recipes that I have come across in my life. Some are my 
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">
   <!-- Recipe 1 -->
-  <a href="/recipes/milk-caramels/michael-navin/" style="text-align: center; text-decoration: none; color: inherit;">
+  <a href="/recipes/milk-caramels/jean-navin/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/milk-caramels.webp" alt="Milk Caramels" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Milk Caramels</div>
-    <div style="font-size: 0.9em; color: #666;">Michael Navin</div>
+    <div style="font-size: 0.9em; color: #666;">Jean Navin</div>
   </a>
   <!-- Recipe 2 -->
   <a href="/recipes/lavender-latte/peets-coffee/" style="text-align: center; text-decoration: none; color: inherit;">
