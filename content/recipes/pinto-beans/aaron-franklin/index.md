@@ -1,8 +1,11 @@
 # Pinto Beans
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Aaron Franklin</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Aaron Franklin</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Pinto Beans](/images/pinto-beans.webp)
@@ -14,15 +17,15 @@ I was introduced to this recipe by a co-worker but the original recipe can be fo
 
 ### Ingredients
 
-* 1 lb dried pinto beans
-* 1/4 medium yellow onion, diced
-* 1/4 cup chile powder
-* 1 tbsp kosher salt
-* 1 tbsp black pepper
-* 2 tsp onion powder
-* 2 tsp garlic powder
-* 1/4 tsp ground cumin
-* 1 cup chopped smoked brisket
+- 1 lb dried pinto beans
+- 1/4 medium yellow onion, diced
+- 1/4 cup chile powder
+- 1 tbsp kosher salt
+- 1 tbsp black pepper
+- 2 tsp onion powder
+- 2 tsp garlic powder
+- 1/4 tsp ground cumin
+- 1 cup chopped smoked brisket
 
 ### Steps
 

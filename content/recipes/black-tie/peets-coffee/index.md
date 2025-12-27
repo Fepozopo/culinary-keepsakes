@@ -1,8 +1,11 @@
 # Black Tie
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Peet's Coffee</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Peet's Coffee</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Black Tie](/images/black-tie.webp)
@@ -14,12 +17,12 @@ I found this recipe on Peet's website and modified it to fit my taste. You can f
 
 ### Ingredients
 
-* 2 tablespoons ground coffee
-* 1 ½ tablespoons chicory syrup
-* 6 ounces cold, filtered water
-* 1 tablespoon sweetened condensed milk
-* Ice
-* 1 tablespoon half and half
+- 2 tablespoons ground coffee
+- 1 ½ tablespoons chicory syrup
+- 6 ounces cold, filtered water
+- 1 tablespoon sweetened condensed milk
+- Ice
+- 1 tablespoon half and half
 
 ### Steps
 
@@ -37,15 +40,15 @@ Chicory syrup can be purchased from many online retailers, or you can make your 
 
 ### Ingredients
 
-* ½ cup water
-* ½ cup sugar
-* 2 tablespoons roasted chicory
+- ½ cup water
+- ½ cup sugar
+- 2 tablespoons roasted chicory
 
 ### Directions
 
 1.  Add all ingredients to a small pan
-2. Over medium heat, bring ingredients to a low simmer.
-3. Turn off heat, cover pan, and let sit for 30 minutes.
-4. Strain out solids and place syrup in a bottle.
+2.  Over medium heat, bring ingredients to a low simmer.
+3.  Turn off heat, cover pan, and let sit for 30 minutes.
+4.  Strain out solids and place syrup in a bottle.
 
-*Syrup will keep, refrigerated, for up to a week.*
+_Syrup will keep, refrigerated, for up to a week._

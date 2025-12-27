@@ -1,8 +1,11 @@
 # Banana Bread
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Pernilla Stryker</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Pernilla Stryker</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Banana Bread](/images/banana-bread.webp)
@@ -14,16 +17,16 @@ It is a great recipe for anyone looking to make a healthier version of banana br
 
 ### Ingredients
 
-* 2 medium (100g) ripe bananas
-* 3 tbsp (46g) egg whites
-* 1.5 cups (120g) Oat flour
-* 1.5 scoops (46g) Protein Powder
-* 1/2 cup 0% fat greek yogurt
-* 1 tsp Cinnamon
-* 1 tsp baking soda
-* 1 tsp vanilla extract
-* 2 tbsp stevia or other 0 cal sweetener
-* 2 tsp milk
+- 2 medium (100g) ripe bananas
+- 3 tbsp (46g) egg whites
+- 1.5 cups (120g) Oat flour
+- 1.5 scoops (46g) Protein Powder
+- 1/2 cup 0% fat greek yogurt
+- 1 tsp Cinnamon
+- 1 tsp baking soda
+- 1 tsp vanilla extract
+- 2 tbsp stevia or other 0 cal sweetener
+- 2 tsp milk
 
 ### Steps
 

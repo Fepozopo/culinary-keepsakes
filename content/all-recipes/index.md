@@ -1,8 +1,10 @@
 # All Recipes
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">All Recipes (A-Z)</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">All Recipes (A-Z)</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+  </nav>
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">

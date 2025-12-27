@@ -1,8 +1,11 @@
 # Pistachio Bread
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Renee DuPrey</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Renee DuPrey</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Pistachio Bread](/images/pistachio-bread.webp)
@@ -13,12 +16,12 @@ This is an easy and simple recipe for pistachio bread. It's a family favorite si
 
 ### Ingredients
 
-* box white cake mix
-* 1 small box pistachio pudding mix
-* 4 eggs
-* 2/3 cup vegetable oil
-* 3/4 cup water
-* 1/2 cup sugar
+- box white cake mix
+- 1 small box pistachio pudding mix
+- 4 eggs
+- 2/3 cup vegetable oil
+- 3/4 cup water
+- 1/2 cup sugar
 
 ### Steps
 

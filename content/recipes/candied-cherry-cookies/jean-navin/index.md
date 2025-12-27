@@ -1,8 +1,11 @@
 # Candied Cherry Cookies
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Jean Navin</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Jean Navin</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Candied Cherry Cookies](/images/candied-cherry-cookies.webp)
@@ -13,14 +16,13 @@ This is a recipe for candied cherry cookies. It is a family recipe that my grand
 
 ### Ingredients
 
-* 1 cup butter
-* 1 cup powdered sugar
-* 1 egg
-* 1 tsp vanilla
-* 2 1/4 cups flour
-* 1 cup pecan halves
-* 2 cups candied cherries
-
+- 1 cup butter
+- 1 cup powdered sugar
+- 1 egg
+- 1 tsp vanilla
+- 2 1/4 cups flour
+- 1 cup pecan halves
+- 2 cups candied cherries
 
 ### Steps
 

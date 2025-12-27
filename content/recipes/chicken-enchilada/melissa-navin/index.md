@@ -1,8 +1,11 @@
 # Chicken Enchilada
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Melissa Navin</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Melissa Navin</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Chicken Enchilada](/images/chicken-enchilada.webp)
@@ -13,14 +16,14 @@ This is a recipe for a chicken enchilada served with tortilla chips. This is to 
 
 ### Ingredients
 
-* 2 c. shredded cooked chicken
-* 1 can (10 3/4 oz.) condensed cream of chicken soup, undiluted
-* 1 c. (4 oz.) shredded cheddar cheese
-* 2 1/2 oz. evaporated milk
-* 1/2 c. chopped celery
-* 1/3 c. finely chopped green chillies
-* 1 env. taco seasoning
-* Tortilla chips
+- 2 c. shredded cooked chicken
+- 1 can (10 3/4 oz.) condensed cream of chicken soup, undiluted
+- 1 c. (4 oz.) shredded cheddar cheese
+- 2 1/2 oz. evaporated milk
+- 1/2 c. chopped celery
+- 1/3 c. finely chopped green chillies
+- 1 env. taco seasoning
+- Tortilla chips
 
 ### Steps
 

@@ -1,8 +1,11 @@
 # Lavender Latte
 
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <span style="font-size: 1.5em; font-weight: bold;">Peet's Coffee</span>
-  <a href="/" style="font-size: 1em; text-decoration: none; font-weight: bold;">HOME</a>
+<div class="recipe-header">
+  <span class="recipe-author">Peet's Coffee</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
 </div>
 
 ![Lavender Latte](/images/lavender-latte.webp)
@@ -14,18 +17,18 @@ I found this recipe on Peet's website and modified it to fit my taste. You can f
 
 ### Ingredients
 
-* 2 tablespoons ground coffee
-* Filtered water
-* 2 tablespoons lavender syrup
-* 6 ounces almond milk
-* Ice
+- 2 tablespoons ground coffee
+- Filtered water
+- 2 tablespoons lavender syrup
+- 6 ounces almond milk
+- Ice
 
 ### Steps
 
 1. Use to coffee and water to prepare espresso.
 2. Add the espresso to a glass.
 3. Add almond milk and syrup to a jar with a tight-fitting lid. Shake vigorously until foamy.
-4. Pour sweetened almond milk into glass, stir, and enjoy. 
+4. Pour sweetened almond milk into glass, stir, and enjoy.
 
 ### Notes
 
