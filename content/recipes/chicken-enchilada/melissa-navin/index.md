@@ -25,7 +25,7 @@ This is a recipe for a chicken enchilada served with tortilla chips. This is to 
 - 1 env. taco seasoning
 - Tortilla chips
 
-### Steps
+### Instructions
 
 1. Combine first 8 ingredients in a small crock-pot
 2. Heat on low until heated through

@@ -23,7 +23,7 @@ This is an easy and simple recipe for pistachio bread. It's a family favorite si
 - 3/4 cup water
 - 1/2 cup sugar
 
-### Steps
+### Instructions
 
 1. Mix everything except the sugar in a bowl. Mix well.
 2. Pour into a greased loaf pan and bake at 350°F for 40 minutes.

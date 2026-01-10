@@ -28,7 +28,7 @@ It is a great recipe for anyone looking to make a healthier version of banana br
 - 2 tbsp stevia or other 0 cal sweetener
 - 2 tsp milk
 
-### Steps
+### Instructions
 
 1. Mix all dry ingredients together in a bowl
 2. Mix all wet ingredients in a separate bowl

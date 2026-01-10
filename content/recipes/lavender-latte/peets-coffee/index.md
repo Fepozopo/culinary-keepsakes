@@ -23,7 +23,7 @@ I found this recipe on Peet's website and modified it to fit my taste. You can f
 - 6 ounces almond milk
 - Ice
 
-### Steps
+### Instructions
 
 1. Use to coffee and water to prepare espresso.
 2. Add the espresso to a glass.

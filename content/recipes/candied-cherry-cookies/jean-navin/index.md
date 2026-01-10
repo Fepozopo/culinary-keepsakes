@@ -24,7 +24,7 @@ This is a recipe for candied cherry cookies. It is a family recipe that my grand
 - 1 cup pecan halves
 - 2 cups candied cherries
 
-### Steps
+### Instructions
 
 1. Cream butter and sifted sugar
 2. Add egg and vanilla, mix well

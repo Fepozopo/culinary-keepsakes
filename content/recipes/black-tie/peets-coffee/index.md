@@ -24,7 +24,7 @@ I found this recipe on Peet's website and modified it to fit my taste. You can f
 - Ice
 - 1 tablespoon half and half
 
-### Steps
+### Instructions
 
 1. Brew the coffee with the water using your favorite method.
 2. Add the coffee, and chicory syrup to a measuring cup or glass. Stir to combine and set aside.

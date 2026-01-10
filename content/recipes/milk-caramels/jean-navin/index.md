@@ -14,6 +14,8 @@
 
 These milk caramels are a delightful treat that combines the rich, creamy flavor of milk with the sweet, buttery taste of caramel. Perfect for satisfying your sweet tooth, these caramels are soft, chewy, and melt in your mouth. Whether you're looking for a homemade gift or a special indulgence for yourself, these milk caramels are sure to please.
 
+Tips: This "gradual milk" method is an old-fashioned way to keep the caramel light and creamy without scorching the milk solids. When adding milk, it is recommended to use room temperature milk.
+
 ### Ingredients
 
 - 2 cups sugar
@@ -23,7 +25,7 @@ These milk caramels are a delightful treat that combines the rich, creamy flavor
 - 1/2 teaspoon salt
 - 1 teaspoon vanilla
 
-### Steps
+### Instructions
 
 1. Heat sugar and syrup in 1 cup milk; stir till dissolved.
 2. Cook, stir frequently, to 246–248°F (firm ball stage).
@@ -35,7 +37,3 @@ These milk caramels are a delightful treat that combines the rich, creamy flavor
 8. Remove from heat and add vanilla.
 9. Pour into buttered 9" square pan.
 10. Cut into squares when cool.
-
-### Notes
-
-This "gradual milk" method is an old-fashioned way to keep the caramel light and creamy without scorching the milk solids. When adding milk, it is recommended to use room temperature milk.
