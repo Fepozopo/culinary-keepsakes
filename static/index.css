@@ -180,3 +180,8 @@ img {
         margin-top: 0.5rem;
     }
 }
+
+.author {
+    font-size: 0.9em;
+    color: #aaa;
+}
