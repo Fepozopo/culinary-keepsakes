@@ -1,7 +1,7 @@
 # Chicken Enchilada
 
 <div class="recipe-header">
-  <span class="recipe-author">Melissa Navin</span>
+  [Melissa Navin](/authors/melissa-navin/)
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/">HOME</a>
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>

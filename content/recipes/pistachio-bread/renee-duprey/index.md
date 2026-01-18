@@ -1,7 +1,7 @@
 # Pistachio Bread
 
 <div class="recipe-header">
-  <span class="recipe-author">Renee DuPrey</span>
+  [Renee DuPrey](/authors/renee-duprey/)
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/">HOME</a>
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>

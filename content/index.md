@@ -8,6 +8,7 @@ This is a collection of recipes that I have come across in my life. Some are my 
   <span class="recipe-author">Most Recent Recipes</span>
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+    <a href="/authors/">AUTHORS &gt;&gt;</a>
   </nav>
 </div>
 

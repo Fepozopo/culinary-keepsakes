@@ -1,7 +1,7 @@
 # Black Tie
 
 <div class="recipe-header">
-  <span class="recipe-author">Peet's Coffee</span>
+  [Peet's Coffee](/authors/peets-coffee/)
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/">HOME</a>
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>

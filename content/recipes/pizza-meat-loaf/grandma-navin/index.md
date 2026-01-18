@@ -1,7 +1,7 @@
 # Pizza Meat Loaf
 
 <div class="recipe-header">
-  <span class="recipe-author">Grandma Navin</span>
+  [Grandma Navin](/authors/grandma-navin/)
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/">HOME</a>
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>

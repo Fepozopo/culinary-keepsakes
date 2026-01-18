@@ -1,7 +1,7 @@
 # Milk Caramels
 
 <div class="recipe-header">
-  <span class="recipe-author">Jean Navin</span>
+  [Jean Navin](/authors/jean-navin/)
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/">HOME</a>
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>

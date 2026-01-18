@@ -1,7 +1,7 @@
 # Pinto Beans
 
 <div class="recipe-header">
-  <span class="recipe-author">Aaron Franklin</span>
+  [Aaron Franklin](/authors/aaron-franklin/)
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/">HOME</a>
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
