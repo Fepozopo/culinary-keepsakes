@@ -1,5 +1,13 @@
 # Authors
 
+<div class="recipe-header">
+  <span class="subtitle">Authors (A-Z)</span>
+  <nav class="recipe-nav" aria-label="Recipe navigation">
+    <a href="/">HOME</a>
+    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
+  </nav>
+</div>
+
 - [Aaron Franklin](/authors/aaron-franklin/)
 - [Grandma Navin](/authors/grandma-navin/)
 - [Jean Navin](/authors/jean-navin/)

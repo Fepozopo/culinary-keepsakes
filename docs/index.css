@@ -136,15 +136,36 @@ img {
     gap: 1rem;
 }
 
-.recipe-author {
+/* Make author link (direct child anchor in .recipe-header) match nav link size
+   and remove underline/border for the author link while keeping nav link styling. */
+.recipe-header > a {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #03dac6;
+    text-decoration: none;
+    border-bottom: none;
+    padding: 0;
+}
+
+.recipe-header a:hover,
+.recipe-header a:focus {
+    color: #fcffa4;
+    border-color: #fcffa4;
+    background: rgba(255, 255, 255, 0.02);
+    outline: none;
+}
+
+.subtitle {
     font-size: 1.5em;
     font-weight: 700;
-    color: inherit; /* inherit theme color */
+    color: inherit;
+    /* inherit theme color */
 }
 
 /* Right-side navigation */
 .recipe-nav {
-    margin-left: auto; /* pushes nav to the right */
+    margin-left: auto;
+    /* pushes nav to the right */
     display: flex;
     gap: 0.75rem;
     align-items: center;

@@ -5,7 +5,7 @@
 This is a collection of recipes that I have come across in my life. Some are my own, some are from family or friends, and some are from the internet. I hope you enjoy them as much as I do.
 
 <div class="recipe-header">
-  <span class="recipe-author">Most Recent Recipes</span>
+  <span class="subtitle">Most Recent Recipes</span>
   <nav class="recipe-nav" aria-label="Recipe navigation">
     <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
     <a href="/authors/">AUTHORS &gt;&gt;</a>
