@@ -60,24 +60,20 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Pinto Beans</div>
     <div class="author">Aaron Franklin</div>
   </a>
-  <a href="/recipes/pizza-meat-loaf/grandma-navin/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/pizza-meat-loaf.webp" alt="Pizza Meat Loaf" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Pizza Meat Loaf</div>
-    <div class="author">Grandma Navin</div>
-  </a>
   <a href="/recipes/pistachio-bread/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/pistachio-bread.webp" alt="Pistachio Bread" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Pistachio Bread</div>
     <div class="author">Renee DuPrey</div>
   </a>
+  <a href="/recipes/pizza-meat-loaf/grandma-navin/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/pizza-meat-loaf.webp" alt="Pizza Meat Loaf" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Pizza Meat Loaf</div>
+    <div class="author">Grandma Navin</div>
+  </a>
   <!-- Blank cell for grid symmetry -->
   <div></div>
   <!-- Blank cell for grid symmetry -->
   <div></div>
   <!-- Blank cell for grid symmetry -->
   <div></div>
-</div>
-
-<div style="margin-top: 2em;">
-  Want to get in touch? <a href="/contact">Contact me here</a>.
 </div>
