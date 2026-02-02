@@ -12,7 +12,7 @@
 
 ### Description
 
-This is a recipe for some banana bread that is both lower in calories and higher in protein than "normal" banana bread. Pernilla Stryker came up with this recipe and I am really enjoyed it. If you'd like to try it out, I highly recommend watching her video on [YouTube](https://youtu.be/45Pl0E1EmH4?si=gEPkhACCP5sZXcQJ).
+This is a recipe for some banana bread that is both lower in calories and higher in protein than "normal" banana bread. Pernilla Stryker came up with this recipe and I really enjoyed it. If you'd like to try it out, I highly recommend watching her video on [YouTube](https://youtu.be/45Pl0E1EmH4?si=gEPkhACCP5sZXcQJ).
 It is a great recipe for anyone looking to make a healthier version of banana bread. The recipe is easy to follow and the end result is delicious. The banana bread is moist, flavorful, and has a nice texture. It is perfect for breakfast or as a snack. I hope you enjoy it as much as I did!
 
 ### Ingredients
