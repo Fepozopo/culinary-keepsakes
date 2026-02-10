@@ -177,6 +177,16 @@ func GeneratePagesRecursive(contentDirPath, templatePath, destDirPath, basepath 
 			return GeneratePage(path, templatePath, outputFile, basepath)
 		}
 
+		// Process html files
+		if strings.HasSuffix(info.Name(), ".html") {
+			relPath, err := filepath.Rel(contentDirPath, path)
+			if err != nil {
+				return err
+			}
+			outputFile := filepath.Join(destDirPath, relPath)
+			return copyFile(path, outputFile)
+		}
+
 		return nil
 	})
 
