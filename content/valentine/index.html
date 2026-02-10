@@ -48,6 +48,7 @@
                 font-size: 2rem;
                 color: var(--accent);
             }
+
             p.lead {
                 margin: 0 0 18px;
                 color: var(--muted);
@@ -80,21 +81,16 @@
             /* No button is fixed so it can roam the full viewport */
             #no {
                 position: fixed;
-                left: 0;
-                top: 0;
                 width: 140px;
-                padding: 10px 16px;
                 background: transparent;
                 color: var(--muted);
                 border: 2px solid rgba(0, 0, 0, 0.06);
                 will-change: transform, box-shadow;
                 z-index: 1200;
                 touch-action: none;
-
-                /* default (resting) visual */
+                padding: 10px 16px;
                 transform: translate(0px, 0px) scale(1);
                 box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-                /* transitions for return-to-resting state (transform transitions set dynamically for moves) */
                 transition:
                     box-shadow 300ms cubic-bezier(0.2, 0.9, 0.2, 1),
                     transform 360ms cubic-bezier(0.2, 0.9, 0.2, 1);
@@ -110,6 +106,16 @@
                 #no {
                     width: 120px;
                 }
+            }
+
+            /* Confetti canvas sits above most content so it's visible; pointer-events none so it won't interfere */
+            canvas#confetti {
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 2500;
             }
         </style>
     </head>
@@ -127,21 +133,26 @@
             <p class="note"></p>
         </div>
 
+        <!-- full-viewport confetti canvas -->
+        <canvas id="confetti" aria-hidden="true"></canvas>
+
         <script>
             // Gentle, center-biased roaming No button with visible easing (scale + shadow).
+            // Confetti is launched when Yes is clicked.
 
             const noBtn = document.getElementById("no");
             const yesBtn = document.getElementById("yes");
+            const confettiCanvas = document.getElementById("confetti");
 
             const edge = 10; // margin from edges
             const mobile = window.matchMedia("(max-width:720px)").matches;
 
-            // timings (ms)
+            // movement timings (ms)
             const MOVE_SLOW = 300;
             const MOVE_FAST = 160;
             const TELEPORT_MS = 140;
 
-            // baseline
+            // baseline: ensure fixed positioning
             noBtn.style.position = "fixed";
             noBtn.style.left = "0";
             noBtn.style.top = "0";
@@ -169,7 +180,6 @@
                 const { c, b } = rects();
                 const maxX = Math.max(0, c.width - b.width - edge);
                 const maxY = Math.max(0, c.height - b.height - edge);
-
                 const nx = clamp(Math.round(x), 0, maxX);
                 const ny = clamp(Math.round(y), 0, maxY);
 
@@ -177,17 +187,16 @@
                 const scale = ms <= MOVE_FAST ? 1.08 : 1.04;
                 const movingShadow = "0 18px 40px rgba(0,0,0,0.16)";
 
-                // set transform transition duration to match ms (makes movement feel tied to duration)
+                // set transform transition duration to match ms
                 noBtn.style.transition = `transform ${ms}ms cubic-bezier(.2,.9,.2,1), box-shadow ${Math.max(180, ms)}ms cubic-bezier(.2,.9,.2,1)`;
 
                 // apply translate + scale; while moving, give stronger shadow
                 noBtn.style.transform = `translate(${nx}px, ${ny}px) scale(${scale})`;
                 noBtn.style.boxShadow = movingShadow;
 
-                // After move completes, revert to resting appearance (slightly delayed so it feels organic)
+                // After move completes, revert to resting appearance
                 clearTimeout(noBtn._restTimer);
                 noBtn._restTimer = setTimeout(() => {
-                    // ease back to scale(1) and small shadow
                     noBtn.style.transition = `transform 420ms cubic-bezier(.2,.9,.2,1), box-shadow 420ms cubic-bezier(.2,.9,.2,1)`;
                     noBtn.style.transform = `translate(${nx}px, ${ny}px) scale(1)`;
                     noBtn.style.boxShadow = "0 3px 8px rgba(0,0,0,0.06)";
@@ -203,7 +212,6 @@
                 const rx = (Math.random() + Math.random() + Math.random()) / 3;
                 const ry = (Math.random() + Math.random() + Math.random()) / 3;
 
-                // nudge a bit so positions feel organic (not perfectly symmetric)
                 const jitter = 12;
                 const x = clamp(
                     rx * maxX + (Math.random() * jitter - jitter / 2),
@@ -218,11 +226,13 @@
                 return { x, y };
             }
 
+            // Mild teleport across viewport
             function teleport() {
                 const spot = centerBiasedSpot();
                 place(spot.x, spot.y, TELEPORT_MS);
             }
 
+            // Gentle jumps
             function gentleJumps(count = mobile ? 3 : 2) {
                 let i = 0;
                 const step = () => {
@@ -234,7 +244,7 @@
                 step();
             }
 
-            // Pointer/touch repulsion: rather than always pushing strictly opposite, pick a nearby center-biased target
+            // Compute a target biased toward center but nudged away from pointer
             function handlePointerNear(px, py) {
                 const { c, b } = rects();
 
@@ -252,11 +262,6 @@
                     ? Math.max(c.width, c.height) * 0.22
                     : 90;
                 if (dist >= trigger) return;
-
-                // compute a target that tends toward center but is offset away from pointer
-                // center point of viewport:
-                const centerViewportX = c.width / 2;
-                const centerViewportY = c.height / 2;
 
                 // base target near center (biased)
                 const base = centerBiasedSpot();
@@ -281,7 +286,7 @@
                 place(nx, ny, MOVE_FAST);
             }
 
-            // Touch handlers
+            // Touch handlers delegate to the central handler
             document.addEventListener(
                 "touchmove",
                 (ev) => {
@@ -306,14 +311,13 @@
                 (e) => {
                     e.preventDefault();
                     setTimeout(() => {
-                        if (Math.random() < 0.6) teleport();
+                        if (Math.random() < 0.5) teleport();
                         else gentleJumps(1);
                     }, 120);
                 },
                 { passive: false },
             );
 
-            // Click: gentle jumps
             noBtn.addEventListener("click", (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -329,19 +333,18 @@
                 mobile ? 4800 : 9000,
             );
 
-            // Mouse move for desktop: send pointer coords to handler
             document.addEventListener("mousemove", (e) => {
                 handlePointerNear(e.clientX, e.clientY);
             });
 
-            // Keep button inside viewport on resize
+            // Keep the button inside viewport on resize
             window.addEventListener("resize", () => {
                 const { c, b } = rects();
                 const cur =
                     noBtn.style.transform || "translate(0px,0px) scale(1)";
-                const m = cur.match(/translate\\((-?\\d+)px,\\s*(-?\\d+)px\\)/);
-                let curX = 0,
-                    curY = 0;
+                const m = cur.match(/translate\((-?\d+)px,\s*(-?\d+)px\)/);
+                let curX = 0;
+                let curY = 0;
                 if (m) {
                     curX = parseInt(m[1], 10);
                     curY = parseInt(m[2], 10);
@@ -356,7 +359,7 @@
                 place(nx, ny, MOVE_SLOW);
             });
 
-            // Initial placement: attempt to place below the Yes button if there's room; otherwise center-biased spot
+            // Initialize: attempt to place below Yes button if possible
             (function init() {
                 requestAnimationFrame(() => {
                     const yesRect = yesBtn.getBoundingClientRect();
@@ -375,7 +378,6 @@
 
                     const canPlaceBelow =
                         yesRect.bottom + b.height + 12 < c.height;
-
                     if (canPlaceBelow) {
                         place(desiredX, desiredY, 10);
                     } else {
@@ -383,18 +385,231 @@
                         place(s.x, s.y, 10);
                     }
 
+                    // Yes button behavior: launch confetti and celebration
                     yesBtn.addEventListener("click", () => {
                         yesBtn.disabled = true;
-                        yesBtn.textContent = "Yay! 💖";
+                        yesBtn.textContent = "😳 Wait, I didn't expect that!";
                         yesBtn.style.transform = "scale(1.02)";
+
+                        // visual background change after a slight delay
                         setTimeout(() => {
                             document.body.style.transition = "background 600ms";
                             document.body.style.background =
                                 "radial-gradient(circle at 20% 20%, #fff0f4 0%, #ffeef2 30%)";
                         }, 200);
+
+                        // Launch confetti from the Yes button center
+                        const rect = yesBtn.getBoundingClientRect();
+                        const originX = rect.left + rect.width / 2;
+                        const originY = rect.top + rect.height / 2;
+
+                        // multiple bursts for a nicer effect
+                        launchConfetti(originX, originY, {
+                            count: 40,
+                            spread: 50,
+                        });
+                        setTimeout(
+                            () =>
+                                launchConfetti(originX, originY, {
+                                    count: 32,
+                                    spread: 60,
+                                }),
+                            200,
+                        );
+                        setTimeout(
+                            () =>
+                                launchConfetti(originX, originY, {
+                                    count: 24,
+                                    spread: 80,
+                                }),
+                            450,
+                        );
                     });
                 });
             })();
+
+            //
+            // Confetti implementation (lightweight)
+            //
+            (function initConfetti() {
+                const ctx = confettiCanvas.getContext("2d");
+                let w = (confettiCanvas.width = window.innerWidth);
+                let h = (confettiCanvas.height = window.innerHeight);
+                let DPR = Math.max(1, window.devicePixelRatio || 1);
+                confettiCanvas.width = w * DPR;
+                confettiCanvas.height = h * DPR;
+                confettiCanvas.style.width = w + "px";
+                confettiCanvas.style.height = h + "px";
+                ctx.scale(DPR, DPR);
+
+                window.addEventListener("resize", () => {
+                    w = confettiCanvas.width = window.innerWidth;
+                    h = confettiCanvas.height = window.innerHeight;
+                    DPR = Math.max(1, window.devicePixelRatio || 1);
+                    confettiCanvas.width = w * DPR;
+                    confettiCanvas.height = h * DPR;
+                    confettiCanvas.style.width = w + "px";
+                    confettiCanvas.style.height = h + "px";
+                    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+                });
+
+                // particle system
+                const colors = [
+                    "#FF3B6B", // pink
+                    "#FFB86B", // warm
+                    "#FFD66B",
+                    "#83E67A",
+                    "#6BD8FF",
+                    "#B38CFF",
+                ];
+
+                const gravity = 900; // px/s^2
+                const drag = 0.995;
+
+                const particles = [];
+
+                function randomRange(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+
+                function createParticle(x, y, angleDeg, speed, size, color) {
+                    const angle = (angleDeg * Math.PI) / 180;
+                    return {
+                        x: x,
+                        y: y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        size: size,
+                        color: color,
+                        rotation: Math.random() * Math.PI * 2,
+                        rSpeed: (Math.random() - 0.5) * 8,
+                        ttl: 2.8 + Math.random() * 0.8, // seconds
+                        age: 0,
+                        wobble: Math.random() * 100,
+                    };
+                }
+
+                // Launch confetti in a cone around upward direction
+                function launchConfetti(x, y, opts = {}) {
+                    const count = opts.count || 30;
+                    const spread = opts.spread || 60; // degrees
+                    const velocity = opts.velocity || (mobile ? 220 : 420);
+                    for (let i = 0; i < count; i++) {
+                        const angle = -90 + (Math.random() - 0.5) * spread; // -90 = up
+                        const speed = velocity * (0.6 + Math.random() * 0.8);
+                        const size = Math.round(randomRange(6, 12));
+                        const color =
+                            colors[Math.floor(Math.random() * colors.length)];
+                        particles.push(
+                            createParticle(x, y, angle, speed, size, color),
+                        );
+                    }
+                    // kick off animation if not running
+                    start();
+                }
+
+                // animation loop
+                let last = performance.now();
+                let running = false;
+                function step(now) {
+                    const dt = (now - last) / 1000;
+                    last = now;
+
+                    // clear with slight transparency for trailing feel; here solid clear for crisp confetti
+                    ctx.clearRect(0, 0, w, h);
+
+                    // update and draw particles
+                    for (let i = particles.length - 1; i >= 0; i--) {
+                        const p = particles[i];
+                        p.age += dt;
+                        if (p.age >= p.ttl) {
+                            particles.splice(i, 1);
+                            continue;
+                        }
+
+                        // physics
+                        p.vy += gravity * dt;
+                        p.vx *= Math.pow(drag, dt * 60);
+                        p.vy *= Math.pow(drag, dt * 60);
+
+                        p.x += p.vx * dt;
+                        p.y += p.vy * dt;
+
+                        // rotation
+                        p.rotation += p.rSpeed * dt;
+
+                        // simple wobble for visual variance
+                        const wob =
+                            Math.sin(p.age * 12 + p.wobble) * (p.size * 0.15);
+
+                        // fade towards end
+                        const lifeRatio = 1 - p.age / p.ttl;
+                        ctx.globalAlpha = Math.max(0, Math.min(1, lifeRatio));
+
+                        // draw rectangle rotated
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate(p.rotation);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(
+                            -p.size / 2 + wob,
+                            -p.size / 2,
+                            p.size,
+                            p.size,
+                        );
+                        ctx.restore();
+                        ctx.globalAlpha = 1;
+                    }
+
+                    // stop if no particles
+                    if (particles.length > 0) {
+                        requestAnimationFrame(step);
+                    } else {
+                        running = false;
+                        // clear to ensure no artifacts
+                        ctx.clearRect(0, 0, w, h);
+                    }
+                }
+
+                function start() {
+                    if (running) return;
+                    running = true;
+                    last = performance.now();
+                    requestAnimationFrame(step);
+                }
+
+                // expose launchConfetti globally for usage in other code
+                window.launchConfetti = function (x, y, opts) {
+                    // map viewport coordinates into canvas coordinate space (canvas uses device pixels but we draw in CSS pixels)
+                    // confettiCanvas is sized to CSS pixels, ctx coordinates are in CSS px (we scaled for DPR via ctx.setTransform)
+                    launchConfettiFromXY(x, y, opts);
+                };
+
+                // helper wrapper that uses internal function defined here to avoid exposing internals
+                function launchConfettiFromXY(x, y, opts) {
+                    // Clamp input coordinates to viewport
+                    const cx = clamp(x, 0, window.innerWidth);
+                    const cy = clamp(y, 0, window.innerHeight);
+                    // create burst
+                    launchConfetti(cx, cy, opts);
+                }
+
+                // Attach the local launchConfetti to a different name to avoid conflict in nested scopes
+                // but we also use window.launchConfetti above.
+                // No additional exports required.
+            })();
+
+            // Note: The initConfetti IIFE declared its own launchConfetti function internally and assigned window.launchConfetti.
+            // Some older closures used launchConfetti; ensure we call window.launchConfetti when Yes is clicked.
+            // For safety, add a small wrapper that calls the window function if present:
+            function launchConfetti(x, y, opts) {
+                if (typeof window.launchConfetti === "function") {
+                    window.launchConfetti(x, y, opts);
+                } else {
+                    // fallback: do nothing gracefully
+                    console.warn("Confetti engine not ready");
+                }
+            }
         </script>
     </body>
 </html>
