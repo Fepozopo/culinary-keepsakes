@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Will you be my Valentine?</title>
+        <style>
+            :root {
+                --bg: #fff1f6;
+                --accent: #ff3b6b;
+                --muted: #666;
+            }
+
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    "Segoe UI",
+                    Roboto,
+                    Arial;
+                background: radial-gradient(
+                    circle at 10% 10%,
+                    #fff7fb 0%,
+                    var(--bg) 30%
+                );
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .card {
+                width: 94%;
+                max-width: 720px;
+                background: #fff;
+                border-radius: 18px;
+                padding: 26px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                position: relative;
+                z-index: 1;
+            }
+
+            h1 {
+                margin: 0 0 8px;
+                font-size: 2rem;
+                color: var(--accent);
+            }
+            p.lead {
+                margin: 0 0 18px;
+                color: var(--muted);
+            }
+
+            .buttons {
+                position: relative;
+                height: 260px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            button {
+                padding: 12px 22px;
+                border-radius: 999px;
+                border: 2px solid transparent;
+                font-size: 1.05rem;
+                cursor: pointer;
+                user-select: none;
+                touch-action: none;
+            }
+
+            #yes {
+                background: var(--accent);
+                color: #fff;
+                box-shadow: 0 6px 18px rgba(255, 59, 107, 0.28);
+            }
+
+            /* No button is fixed so it can roam the full viewport */
+            #no {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 140px;
+                padding: 10px 16px;
+                background: transparent;
+                color: var(--muted);
+                border: 2px solid rgba(0, 0, 0, 0.06);
+                will-change: transform, box-shadow;
+                z-index: 1200;
+                touch-action: none;
+
+                /* default (resting) visual */
+                transform: translate(0px, 0px) scale(1);
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+                /* transitions for return-to-resting state (transform transitions set dynamically for moves) */
+                transition:
+                    box-shadow 300ms cubic-bezier(0.2, 0.9, 0.2, 1),
+                    transform 360ms cubic-bezier(0.2, 0.9, 0.2, 1);
+            }
+
+            .note {
+                margin-top: 12px;
+                color: #999;
+                font-size: 0.92rem;
+            }
+
+            @media (max-width: 420px) {
+                #no {
+                    width: 120px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="card" role="main" aria-label="Valentine card">
+            <h1>Will you be my Valentine?</h1>
+            <p class="lead">I made this just for you 💖</p>
+
+            <div class="buttons" id="buttons">
+                <button id="yes">Yes — of course!</button>
+                <button id="no" aria-label="No button" tabindex="-1">No</button>
+            </div>
+
+            <p class="note"></p>
+        </div>
+
+        <script>
+            // Gentle, center-biased roaming No button with visible easing (scale + shadow).
+
+            const noBtn = document.getElementById("no");
+            const yesBtn = document.getElementById("yes");
+
+            const edge = 10; // margin from edges
+            const mobile = window.matchMedia("(max-width:720px)").matches;
+
+            // timings (ms)
+            const MOVE_SLOW = 300;
+            const MOVE_FAST = 160;
+            const TELEPORT_MS = 140;
+
+            // baseline
+            noBtn.style.position = "fixed";
+            noBtn.style.left = "0";
+            noBtn.style.top = "0";
+            noBtn.style.transform = "translate(0px, 0px) scale(1)";
+
+            function rects() {
+                // viewport as container
+                return {
+                    c: {
+                        left: 0,
+                        top: 0,
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                    },
+                    b: noBtn.getBoundingClientRect(),
+                };
+            }
+
+            function clamp(v, a, b) {
+                return Math.max(a, Math.min(b, v));
+            }
+
+            // Stronger, more-visible easing: scale up and raise shadow while moving, then ease back.
+            function place(x, y, ms = MOVE_SLOW) {
+                const { c, b } = rects();
+                const maxX = Math.max(0, c.width - b.width - edge);
+                const maxY = Math.max(0, c.height - b.height - edge);
+
+                const nx = clamp(Math.round(x), 0, maxX);
+                const ny = clamp(Math.round(y), 0, maxY);
+
+                // More visible scale for faster moves
+                const scale = ms <= MOVE_FAST ? 1.08 : 1.04;
+                const movingShadow = "0 18px 40px rgba(0,0,0,0.16)";
+
+                // set transform transition duration to match ms (makes movement feel tied to duration)
+                noBtn.style.transition = `transform ${ms}ms cubic-bezier(.2,.9,.2,1), box-shadow ${Math.max(180, ms)}ms cubic-bezier(.2,.9,.2,1)`;
+
+                // apply translate + scale; while moving, give stronger shadow
+                noBtn.style.transform = `translate(${nx}px, ${ny}px) scale(${scale})`;
+                noBtn.style.boxShadow = movingShadow;
+
+                // After move completes, revert to resting appearance (slightly delayed so it feels organic)
+                clearTimeout(noBtn._restTimer);
+                noBtn._restTimer = setTimeout(() => {
+                    // ease back to scale(1) and small shadow
+                    noBtn.style.transition = `transform 420ms cubic-bezier(.2,.9,.2,1), box-shadow 420ms cubic-bezier(.2,.9,.2,1)`;
+                    noBtn.style.transform = `translate(${nx}px, ${ny}px) scale(1)`;
+                    noBtn.style.boxShadow = "0 3px 8px rgba(0,0,0,0.06)";
+                }, ms + 40);
+            }
+
+            // Center-biased spot: average of three randoms biases strongly toward center
+            function centerBiasedSpot() {
+                const { c, b } = rects();
+                const maxX = Math.max(0, c.width - b.width - edge);
+                const maxY = Math.max(0, c.height - b.height - edge);
+
+                const rx = (Math.random() + Math.random() + Math.random()) / 3;
+                const ry = (Math.random() + Math.random() + Math.random()) / 3;
+
+                // nudge a bit so positions feel organic (not perfectly symmetric)
+                const jitter = 12;
+                const x = clamp(
+                    rx * maxX + (Math.random() * jitter - jitter / 2),
+                    0,
+                    maxX,
+                );
+                const y = clamp(
+                    ry * maxY + (Math.random() * jitter - jitter / 2),
+                    0,
+                    maxY,
+                );
+                return { x, y };
+            }
+
+            function teleport() {
+                const spot = centerBiasedSpot();
+                place(spot.x, spot.y, TELEPORT_MS);
+            }
+
+            function gentleJumps(count = mobile ? 3 : 2) {
+                let i = 0;
+                const step = () => {
+                    const s = centerBiasedSpot();
+                    place(s.x, s.y, MOVE_FAST);
+                    i++;
+                    if (i < count) setTimeout(step, MOVE_FAST + 60);
+                };
+                step();
+            }
+
+            // Pointer/touch repulsion: rather than always pushing strictly opposite, pick a nearby center-biased target
+            function handlePointerNear(px, py) {
+                const { c, b } = rects();
+
+                const btnX = b.left - c.left;
+                const btnY = b.top - c.top;
+                const centerX = btnX + b.width / 2;
+                const centerY = btnY + b.height / 2;
+
+                const dx = px - centerX;
+                const dy = py - centerY;
+                const dist = Math.hypot(dx, dy);
+
+                // triggers: smaller on desktop, a bit larger on mobile to give finger space
+                const trigger = mobile
+                    ? Math.max(c.width, c.height) * 0.22
+                    : 90;
+                if (dist >= trigger) return;
+
+                // compute a target that tends toward center but is offset away from pointer
+                // center point of viewport:
+                const centerViewportX = c.width / 2;
+                const centerViewportY = c.height / 2;
+
+                // base target near center (biased)
+                const base = centerBiasedSpot();
+
+                // compute a small vector away from pointer, scaled by proximity (gentle)
+                const repelStrength = mobile ? 160 : 90;
+                const nx = clamp(
+                    base.x -
+                        (dx / (dist || 1)) *
+                            (repelStrength * (1 - dist / (trigger + 1))),
+                    0,
+                    Math.max(0, c.width - b.width - edge),
+                );
+                const ny = clamp(
+                    base.y -
+                        (dy / (dist || 1)) *
+                            (repelStrength * (1 - dist / (trigger + 1))),
+                    0,
+                    Math.max(0, c.height - b.height - edge),
+                );
+
+                place(nx, ny, MOVE_FAST);
+            }
+
+            // Touch handlers
+            document.addEventListener(
+                "touchmove",
+                (ev) => {
+                    const t = ev.touches && ev.touches[0];
+                    if (!t) return;
+                    handlePointerNear(t.clientX, t.clientY);
+                },
+                { passive: true },
+            );
+
+            noBtn.addEventListener(
+                "touchstart",
+                (e) => {
+                    e.preventDefault();
+                    gentleJumps(mobile ? 2 : 2);
+                },
+                { passive: false },
+            );
+
+            noBtn.addEventListener(
+                "touchend",
+                (e) => {
+                    e.preventDefault();
+                    setTimeout(() => {
+                        if (Math.random() < 0.6) teleport();
+                        else gentleJumps(1);
+                    }, 120);
+                },
+                { passive: false },
+            );
+
+            // Click: gentle jumps
+            noBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                gentleJumps(2);
+            });
+
+            // occasional gentle roam
+            setInterval(
+                () => {
+                    if (Math.random() < 0.12) teleport();
+                    else if (Math.random() < 0.28) gentleJumps(1);
+                },
+                mobile ? 4800 : 9000,
+            );
+
+            // Mouse move for desktop: send pointer coords to handler
+            document.addEventListener("mousemove", (e) => {
+                handlePointerNear(e.clientX, e.clientY);
+            });
+
+            // Keep button inside viewport on resize
+            window.addEventListener("resize", () => {
+                const { c, b } = rects();
+                const cur =
+                    noBtn.style.transform || "translate(0px,0px) scale(1)";
+                const m = cur.match(/translate\\((-?\\d+)px,\\s*(-?\\d+)px\\)/);
+                let curX = 0,
+                    curY = 0;
+                if (m) {
+                    curX = parseInt(m[1], 10);
+                    curY = parseInt(m[2], 10);
+                } else {
+                    curX = b.left;
+                    curY = b.top;
+                }
+                const maxX = Math.max(0, c.width - b.width - edge);
+                const maxY = Math.max(0, c.height - b.height - edge);
+                const nx = clamp(curX, 0, maxX);
+                const ny = clamp(curY, 0, maxY);
+                place(nx, ny, MOVE_SLOW);
+            });
+
+            // Initial placement: attempt to place below the Yes button if there's room; otherwise center-biased spot
+            (function init() {
+                requestAnimationFrame(() => {
+                    const yesRect = yesBtn.getBoundingClientRect();
+                    const { c, b } = rects();
+
+                    const desiredX = clamp(
+                        yesRect.left + (yesRect.width - b.width) / 2,
+                        0,
+                        Math.max(0, c.width - b.width - edge),
+                    );
+                    const desiredY = clamp(
+                        yesRect.bottom + 12,
+                        0,
+                        Math.max(0, c.height - b.height - edge),
+                    );
+
+                    const canPlaceBelow =
+                        yesRect.bottom + b.height + 12 < c.height;
+
+                    if (canPlaceBelow) {
+                        place(desiredX, desiredY, 10);
+                    } else {
+                        const s = centerBiasedSpot();
+                        place(s.x, s.y, 10);
+                    }
+
+                    yesBtn.addEventListener("click", () => {
+                        yesBtn.disabled = true;
+                        yesBtn.textContent = "Yay! 💖";
+                        yesBtn.style.transform = "scale(1.02)";
+                        setTimeout(() => {
+                            document.body.style.transition = "background 600ms";
+                            document.body.style.background =
+                                "radial-gradient(circle at 20% 20%, #fff0f4 0%, #ffeef2 30%)";
+                        }, 200);
+                    });
+                });
+            })();
+        </script>
+    </body>
+</html>
