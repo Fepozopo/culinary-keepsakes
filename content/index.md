@@ -6,10 +6,6 @@ This is a collection of recipes that I have come across in my life. Some are my 
 
 <div class="recipe-header">
   <span class="subtitle">Most Recent Recipes</span>
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
-    <a href="/authors/">AUTHORS &gt;&gt;</a>
-  </nav>
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">

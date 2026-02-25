@@ -1,21 +1,64 @@
 <!doctype html>
-<html>
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Authors</title>
-    <link href="/index.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Authors</title>
+  <link rel="stylesheet" href="/oat.css">
 </head>
+<body data-sidebar-layout>
+  <nav data-topnav>
+    <button data-sidebar-toggle aria-label="Toggle sidebar" class="btn">☰</button>
+    <a href="/" class="brand" style="margin-left:0.5rem; font-weight:700;">Culinary Keepsakes</a>
+    <div style="flex:1"></div>
+    <button id="theme-toggle" class="btn" aria-label="Toggle theme">Theme</button>
+  </nav>
 
-<body>
-    <article><div><h1>Authors</h1><p><div class="recipe-header">
+  <aside data-sidebar>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/all-recipes/">All Recipes</a>
+      <a href="/authors/">Authors</a>
+      <a href="/contact/">Contact</a>
+      <a href="/valentine/">Valentine</a>
+    </nav>
+  </aside>
+
+  <main class="wrap">
+    <div class="container">
+      <div><h1>Authors</h1><p><div class="recipe-header">
 <span class="subtitle">Authors (A-Z)</span>
 <nav class="recipe-nav" aria-label="Recipe navigation">
 <a href="/">HOME</a>
 <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
 </nav>
-</div></p><ul><li><a href="/authors/aaron-franklin/">Aaron Franklin</a></li><li><a href="/authors/grandma-navin/">Grandma Navin</a></li><li><a href="/authors/jean-navin/">Jean Navin</a></li><li><a href="/authors/melissa-navin/">Melissa Navin</a></li><li><a href="/authors/peets-coffee/">Peet's Coffee</a></li><li><a href="/authors/pernilla-stryker/">Pernilla Stryker</a></li><li><a href="/authors/renee-duprey/">Renee DuPrey</a></li></ul></div></article>
-</body>
+</div></p><p><div class="row" style="margin-top:2em; gap:1rem;">
+<div class="col col-4"><a class="card card-link" href="/authors/aaron-franklin/"><div class="card-body">Aaron Franklin</div></a></div>
+<div class="col col-4"><a class="card card-link" href="/authors/grandma-navin/"><div class="card-body">Grandma Navin</div></a></div>
+<div class="col col-4"><a class="card card-link" href="/authors/jean-navin/"><div class="card-body">Jean Navin</div></a></div>
+<div class="col col-4"><a class="card card-link" href="/authors/melissa-navin/"><div class="card-body">Melissa Navin</div></a></div>
+<div class="col col-4"><a class="card card-link" href="/authors/peets-coffee/"><div class="card-body">Peet's Coffee</div></a></div>
+<div class="col col-4"><a class="card card-link" href="/authors/pernilla-stryker/"><div class="card-body">Pernilla Stryker</div></a></div>
+<div class="col col-4"><a class="card card-link" href="/authors/renee-duprey/"><div class="card-body">Renee DuPrey</div></a></div>
+</div></p></div>
+    </div>
+  </main>
 
+  <script src="/oat.js" defer></script>
+  <script>
+    (function() {
+      const doc = document.documentElement;
+      const saved = localStorage.getItem('theme');
+      if (saved) doc.setAttribute('data-theme', saved);
+      else if (!doc.getAttribute('data-theme')) doc.setAttribute('data-theme','dark');
+
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.addEventListener('click', () => {
+        const next = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        doc.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
 </html>

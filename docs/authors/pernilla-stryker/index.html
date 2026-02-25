@@ -1,15 +1,32 @@
 <!doctype html>
-<html>
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pernilla Stryker's Recipes</title>
-    <link href="/index.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pernilla Stryker's Recipes</title>
+  <link rel="stylesheet" href="/oat.css">
 </head>
+<body data-sidebar-layout>
+  <nav data-topnav>
+    <button data-sidebar-toggle aria-label="Toggle sidebar" class="btn">☰</button>
+    <a href="/" class="brand" style="margin-left:0.5rem; font-weight:700;">Culinary Keepsakes</a>
+    <div style="flex:1"></div>
+    <button id="theme-toggle" class="btn" aria-label="Toggle theme">Theme</button>
+  </nav>
 
-<body>
-    <article><div><h1>Pernilla Stryker's Recipes</h1><p><div class="recipe-header">
+  <aside data-sidebar>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/all-recipes/">All Recipes</a>
+      <a href="/authors/">Authors</a>
+      <a href="/contact/">Contact</a>
+      <a href="/valentine/">Valentine</a>
+    </nav>
+  </aside>
+
+  <main class="wrap">
+    <div class="container">
+      <div><h1>Pernilla Stryker's Recipes</h1><p><div class="recipe-header">
 <nav class="recipe-nav" aria-label="Recipe navigation">
 <a href="/">HOME</a>
 <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
@@ -22,7 +39,25 @@
 </a>
 <div></div>
 <div></div>
-</div></p></div></article>
-</body>
+</div></p></div>
+    </div>
+  </main>
 
+  <script src="/oat.js" defer></script>
+  <script>
+    (function() {
+      const doc = document.documentElement;
+      const saved = localStorage.getItem('theme');
+      if (saved) doc.setAttribute('data-theme', saved);
+      else if (!doc.getAttribute('data-theme')) doc.setAttribute('data-theme','dark');
+
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.addEventListener('click', () => {
+        const next = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        doc.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
 </html>

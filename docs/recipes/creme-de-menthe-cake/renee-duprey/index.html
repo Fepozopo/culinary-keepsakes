@@ -1,21 +1,56 @@
 <!doctype html>
-<html>
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Creme de Menthe Cake</title>
-    <link href="/index.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Creme de Menthe Cake</title>
+  <link rel="stylesheet" href="/oat.css">
 </head>
+<body data-sidebar-layout>
+  <nav data-topnav>
+    <button data-sidebar-toggle aria-label="Toggle sidebar" class="btn">☰</button>
+    <a href="/" class="brand" style="margin-left:0.5rem; font-weight:700;">Culinary Keepsakes</a>
+    <div style="flex:1"></div>
+    <button id="theme-toggle" class="btn" aria-label="Toggle theme">Theme</button>
+  </nav>
 
-<body>
-    <article><div><h1>Creme de Menthe Cake</h1><p><div class="recipe-header">
+  <aside data-sidebar>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/all-recipes/">All Recipes</a>
+      <a href="/authors/">Authors</a>
+      <a href="/contact/">Contact</a>
+      <a href="/valentine/">Valentine</a>
+    </nav>
+  </aside>
+
+  <main class="wrap">
+    <div class="container">
+      <div><h1>Creme de Menthe Cake</h1><p><div class="recipe-header">
 <a href="/authors/renee-duprey/">Renee DuPrey</a>
 <nav class="recipe-nav" aria-label="Recipe navigation">
 <a href="/">HOME</a>
 <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
 </nav>
-</div></p><p><img alt="Creme de Menthe Cake" src="/images/creme-de-menthe-cake.webp" /></p><h3>Description</h3><p>This easy, showstopper dessert combines a light white cake with a bright mint kick — creme de menthe is folded into the batter, then the cooled cake is layered with rich chocolate fudge and a minty whipped topping. The result is a creamy, mint-chocolate treat that’s refreshing yet indulgent, perfect for holidays, dinner parties, or St. Patrick’s Day celebrations.</p><p>Tips: Use creme de menthe liqueur for authentic flavor, or substitute 1–2 teaspoons peppermint extract mixed with a little cream or milk for a non‑alcoholic version (adjust to taste). Chill the cake so the layers set cleanly, and garnish with chocolate shavings, crushed peppermint candies, or a few fresh mint leaves just before serving. Store refrigerated and enjoy cold.</p><h3>Ingredients</h3><ul><li>1 box White cake mix</li><li>1/3 c Creme de Menthe</li><li><b>Topping:</b></li><li>1 jar Hershey’s fudge topping</li><li>1 tub Cool Whip</li><li>1/3 c Creme de Menthe</li></ul><h3>Instructions</h3><ol><li><b>Bake:</b> Prepare cake mix as directed on the box. Add 1/3 c Creme de Menthe to the batter. Bake as directed and cool.</li><li><b>Layer 1:</b> Spread the jar of fudge topping over the cooled cake.</li><li><b>Layer 2:</b> Mix the Cool Whip and the remaining 1/3 c Creme de Menthe together. Spread this over the fudge layer.</li><li><b>Storage:</b> Keep in the refrigerator.</li></ol></div></article>
-</body>
+</div></p><p><img alt="Creme de Menthe Cake" src="/images/creme-de-menthe-cake.webp" /></p><h3>Description</h3><p>This easy, showstopper dessert combines a light white cake with a bright mint kick — creme de menthe is folded into the batter, then the cooled cake is layered with rich chocolate fudge and a minty whipped topping. The result is a creamy, mint-chocolate treat that’s refreshing yet indulgent, perfect for holidays, dinner parties, or St. Patrick’s Day celebrations.</p><p>Tips: Use creme de menthe liqueur for authentic flavor, or substitute 1–2 teaspoons peppermint extract mixed with a little cream or milk for a non‑alcoholic version (adjust to taste). Chill the cake so the layers set cleanly, and garnish with chocolate shavings, crushed peppermint candies, or a few fresh mint leaves just before serving. Store refrigerated and enjoy cold.</p><h3>Ingredients</h3><ul><li>1 box White cake mix</li><li>1/3 c Creme de Menthe</li><li><b>Topping:</b></li><li>1 jar Hershey’s fudge topping</li><li>1 tub Cool Whip</li><li>1/3 c Creme de Menthe</li></ul><h3>Instructions</h3><ol><li><b>Bake:</b> Prepare cake mix as directed on the box. Add 1/3 c Creme de Menthe to the batter. Bake as directed and cool.</li><li><b>Layer 1:</b> Spread the jar of fudge topping over the cooled cake.</li><li><b>Layer 2:</b> Mix the Cool Whip and the remaining 1/3 c Creme de Menthe together. Spread this over the fudge layer.</li><li><b>Storage:</b> Keep in the refrigerator.</li></ol></div>
+    </div>
+  </main>
 
+  <script src="/oat.js" defer></script>
+  <script>
+    (function() {
+      const doc = document.documentElement;
+      const saved = localStorage.getItem('theme');
+      if (saved) doc.setAttribute('data-theme', saved);
+      else if (!doc.getAttribute('data-theme')) doc.setAttribute('data-theme','dark');
+
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.addEventListener('click', () => {
+        const next = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        doc.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
 </html>

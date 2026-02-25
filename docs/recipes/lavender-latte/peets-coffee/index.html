@@ -1,22 +1,57 @@
 <!doctype html>
-<html>
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lavender Latte</title>
-    <link href="/index.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lavender Latte</title>
+  <link rel="stylesheet" href="/oat.css">
 </head>
+<body data-sidebar-layout>
+  <nav data-topnav>
+    <button data-sidebar-toggle aria-label="Toggle sidebar" class="btn">☰</button>
+    <a href="/" class="brand" style="margin-left:0.5rem; font-weight:700;">Culinary Keepsakes</a>
+    <div style="flex:1"></div>
+    <button id="theme-toggle" class="btn" aria-label="Toggle theme">Theme</button>
+  </nav>
 
-<body>
-    <article><div><h1>Lavender Latte</h1><p><div class="recipe-header">
+  <aside data-sidebar>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/all-recipes/">All Recipes</a>
+      <a href="/authors/">Authors</a>
+      <a href="/contact/">Contact</a>
+      <a href="/valentine/">Valentine</a>
+    </nav>
+  </aside>
+
+  <main class="wrap">
+    <div class="container">
+      <div><h1>Lavender Latte</h1><p><div class="recipe-header">
 <a href="/authors/peets-coffee/">Peet's Coffee</a>
 <nav class="recipe-nav" aria-label="Recipe navigation">
 <a href="/">HOME</a>
 <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
 </nav>
 </div></p><p><img alt="Lavender Latte" src="/images/lavender-latte.webp" /></p><h3>Description</h3><p>Bring café-level calm to your day with this Lavender Latte. Smooth, floral, and lightly sweet, it’s an easy way to upgrade your latte game at home. Add a foamy swirl of lavender-infused almond milk and you’ve got yourself a sip that’s both chill and a little bit luxe.
-I found this recipe on Peet's website and modified it to fit my taste. You can find the original recipe <a href="https://www.peets.com/blogs/peets/ultra-lavender-cold-brew-oat-latte-recipe-1?utm_source=Iterable&utm_medium=email&utm_campaign=20250504-Lavender-Ultra-Evergreen&utm_content=cfcp">here</a>.</p><h3>Ingredients</h3><ul><li>2 tablespoons ground coffee</li><li>Filtered water</li><li>2 tablespoons lavender syrup</li><li>6 ounces almond milk</li><li>Ice</li></ul><h3>Instructions</h3><ol><li>Use to coffee and water to prepare espresso.</li><li>Add the espresso to a glass.</li><li>Add almond milk and syrup to a jar with a tight-fitting lid. Shake vigorously until foamy.</li><li>Pour sweetened almond milk into glass, stir, and enjoy.</li></ol><h3>Notes</h3><p>You can use other tools and techniques to froth the almond milk and syrup, like a blender or bullet blender, whisk, or hand frother. Or skip the froth and just pour, stir, and enjoy!</p><p>Lavender syrup can be purchased at many markets or online, or try this easy recipe:</p><h2>Lavender Syrup:</h2><p>Heat 1/2 cup sugar, 1/2 cup water, and 1 tablespoon dried culinary lavender over medium low heat. Swirl gently until sugar is dissolved. Strain out lavender and let cool. Will keep, refrigerated, for one week.</p></div></article>
-</body>
+I found this recipe on Peet's website and modified it to fit my taste. You can find the original recipe <a href="https://www.peets.com/blogs/peets/ultra-lavender-cold-brew-oat-latte-recipe-1?utm_source=Iterable&utm_medium=email&utm_campaign=20250504-Lavender-Ultra-Evergreen&utm_content=cfcp">here</a>.</p><h3>Ingredients</h3><ul><li>2 tablespoons ground coffee</li><li>Filtered water</li><li>2 tablespoons lavender syrup</li><li>6 ounces almond milk</li><li>Ice</li></ul><h3>Instructions</h3><ol><li>Use to coffee and water to prepare espresso.</li><li>Add the espresso to a glass.</li><li>Add almond milk and syrup to a jar with a tight-fitting lid. Shake vigorously until foamy.</li><li>Pour sweetened almond milk into glass, stir, and enjoy.</li></ol><h3>Notes</h3><p>You can use other tools and techniques to froth the almond milk and syrup, like a blender or bullet blender, whisk, or hand frother. Or skip the froth and just pour, stir, and enjoy!</p><p>Lavender syrup can be purchased at many markets or online, or try this easy recipe:</p><h2>Lavender Syrup:</h2><p>Heat 1/2 cup sugar, 1/2 cup water, and 1 tablespoon dried culinary lavender over medium low heat. Swirl gently until sugar is dissolved. Strain out lavender and let cool. Will keep, refrigerated, for one week.</p></div>
+    </div>
+  </main>
 
+  <script src="/oat.js" defer></script>
+  <script>
+    (function() {
+      const doc = document.documentElement;
+      const saved = localStorage.getItem('theme');
+      if (saved) doc.setAttribute('data-theme', saved);
+      else if (!doc.getAttribute('data-theme')) doc.setAttribute('data-theme','dark');
+
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.addEventListener('click', () => {
+        const next = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        doc.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
 </html>
