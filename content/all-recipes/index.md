@@ -8,72 +8,114 @@
   </nav>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">
+<div class="row" style="margin-top:2em; margin-bottom:2em; gap:1.5em;">
   <!-- Alphabetical order -->
-  <a href="/recipes/banana-bread/pernilla-stryker/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/banana-bread.webp" alt="Banana Bread" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Banana Bread</div>
-    <div class="author">Pernilla Stryker</div>
-  </a>
-  <a href="/recipes/black-tie/peets-coffee/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/black-tie.webp" alt="Black Tie" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Black Tie</div>
-    <div class="author">Peet's Coffee</div>
-  </a>
-  <a href="/recipes/candied-cherry-cookies/jean-navin/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/candied-cherry-cookies.webp" alt="Candied Cherry Cookies" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Candied Cherry Cookies</div>
-    <div class="author">Jean Navin</div>
-  </a>
-  <a href="/recipes/chicken-enchilada/melissa-navin/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/chicken-enchilada.webp" alt="Chicken Enchilada" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Chicken Enchilada</div>
-    <div class="author">Melissa Navin</div>
-  </a>
-  <a href="/recipes/creme-de-menthe-cake/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/creme-de-menthe-cake.webp" alt="Creme de Menthe Cake" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Creme de Menthe Cake</div>
-    <div class="author">Renee DuPrey</div>
-  </a>
-  <a href="/recipes/ho-ho-bars/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/ho-ho-bars.webp" alt="Ho Ho Bars" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Ho Ho Bars</div>
-    <div class="author">Renee DuPrey</div>
-  </a>
-  <a href="/recipes/lavender-latte/peets-coffee/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/lavender-latte.webp" alt="Lavender Latte" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Lavender Latte</div>
-    <div class="author">Peet's Coffee</div>
-  </a>
-  <a href="/recipes/milk-caramels/jean-navin/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/milk-caramels.webp" alt="Milk Caramels" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Milk Caramels</div>
-    <div class="author">Jean Navin</div>
-  </a>
-  <a href="/recipes/orange-julius/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/orange-julius.webp" alt="Orange Julius" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Orange Julius</div>
-    <div class="author">Renee DuPrey</div>
-  </a>
-  <a href="/recipes/pinto-beans/aaron-franklin/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/pinto-beans.webp" alt="Pinto Beans" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Pinto Beans</div>
-    <div class="author">Aaron Franklin</div>
-  </a>
-  <a href="/recipes/pistachio-bread/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/pistachio-bread.webp" alt="Pistachio Bread" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Pistachio Bread</div>
-    <div class="author">Renee DuPrey</div>
-  </a>
-  <a href="/recipes/pizza-meat-loaf/grandma-navin/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/pizza-meat-loaf.webp" alt="Pizza Meat Loaf" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Pizza Meat Loaf</div>
-    <div class="author">Grandma Navin</div>
-  </a>
-  <!-- Blank cell for grid symmetry -->
-  <div></div>
-  <!-- Blank cell for grid symmetry -->
-  <div></div>
-  <!-- Blank cell for grid symmetry -->
-  <div></div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/banana-bread/pernilla-stryker/">
+      <img src="/images/banana-bread.webp" alt="Banana Bread">
+      <div class="card-body">
+        <div style="font-weight:bold;">Banana Bread</div>
+        <div class="author">Pernilla Stryker</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/black-tie/peets-coffee/">
+      <img src="/images/black-tie.webp" alt="Black Tie">
+      <div class="card-body">
+        <div style="font-weight:bold;">Black Tie</div>
+        <div class="author">Peet's Coffee</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/candied-cherry-cookies/jean-navin/">
+      <img src="/images/candied-cherry-cookies.webp" alt="Candied Cherry Cookies">
+      <div class="card-body">
+        <div style="font-weight:bold;">Candied Cherry Cookies</div>
+        <div class="author">Jean Navin</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/chicken-enchilada/melissa-navin/">
+      <img src="/images/chicken-enchilada.webp" alt="Chicken Enchilada">
+      <div class="card-body">
+        <div style="font-weight:bold;">Chicken Enchilada</div>
+        <div class="author">Melissa Navin</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/creme-de-menthe-cake/renee-duprey/">
+      <img src="/images/creme-de-menthe-cake.webp" alt="Creme de Menthe Cake">
+      <div class="card-body">
+        <div style="font-weight:bold;">Creme de Menthe Cake</div>
+        <div class="author">Renee DuPrey</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/ho-ho-bars/renee-duprey/">
+      <img src="/images/ho-ho-bars.webp" alt="Ho Ho Bars">
+      <div class="card-body">
+        <div style="font-weight:bold;">Ho Ho Bars</div>
+        <div class="author">Renee DuPrey</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/lavender-latte/peets-coffee/">
+      <img src="/images/lavender-latte.webp" alt="Lavender Latte">
+      <div class="card-body">
+        <div style="font-weight:bold;">Lavender Latte</div>
+        <div class="author">Peet's Coffee</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/milk-caramels/jean-navin/">
+      <img src="/images/milk-caramels.webp" alt="Milk Caramels">
+      <div class="card-body">
+        <div style="font-weight:bold;">Milk Caramels</div>
+        <div class="author">Jean Navin</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/orange-julius/renee-duprey/">
+      <img src="/images/orange-julius.webp" alt="Orange Julius">
+      <div class="card-body">
+        <div style="font-weight:bold;">Orange Julius</div>
+        <div class="author">Renee DuPrey</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/pinto-beans/aaron-franklin/">
+      <img src="/images/pinto-beans.webp" alt="Pinto Beans">
+      <div class="card-body">
+        <div style="font-weight:bold;">Pinto Beans</div>
+        <div class="author">Aaron Franklin</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/pistachio-bread/renee-duprey/">
+      <img src="/images/pistachio-bread.webp" alt="Pistachio Bread">
+      <div class="card-body">
+        <div style="font-weight:bold;">Pistachio Bread</div>
+        <div class="author">Renee DuPrey</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/pizza-meat-loaf/grandma-navin/">
+      <img src="/images/pizza-meat-loaf.webp" alt="Pizza Meat Loaf">
+      <div class="card-body">
+        <div style="font-weight:bold;">Pizza Meat Loaf</div>
+        <div class="author">Grandma Navin</div>
+      </div>
+    </a>
+  </div>
 </div>
