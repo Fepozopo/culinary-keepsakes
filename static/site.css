@@ -40,3 +40,17 @@
 
 /* Ensure card content isn't masked by overflow on ancestor elements */
 .card { overflow: visible; }
+
+/* Shrink standalone hero/image blocks on recipe pages and home page
+   Targets images that are inside a paragraph which is a direct child of
+   the content container. This avoids touching card thumbnails or
+   other images inside grids. */
+.container > div > p > img {
+  display: block;
+  margin: 0.6rem auto;
+  max-width: 720px; /* reduce full-size display */
+  max-height: 720px; /* reduce full-size display */
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
