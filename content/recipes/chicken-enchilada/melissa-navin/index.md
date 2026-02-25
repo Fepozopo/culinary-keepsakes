@@ -1,6 +1,6 @@
 # Chicken Enchilada
 
-<p class="author"><a href="/authors/melissa-navin/">Melissa Navin</a></p>
+#### [Melissa Navin](/authors/melissa-navin/)
 
 ![Chicken Enchilada](/images/chicken-enchilada.webp)
 

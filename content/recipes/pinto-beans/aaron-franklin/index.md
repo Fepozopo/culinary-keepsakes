@@ -1,6 +1,6 @@
 # Pinto Beans
 
-<p class="author"><a href="/authors/aaron-franklin/">Aaron Franklin</a></p>
+#### [Aaron Franklin](/authors/aaron-franklin/)
 
 ![Pinto Beans](/images/pinto-beans.webp)
 

@@ -1,6 +1,6 @@
 # Creme de Menthe Cake
 
-<p class="author"><a href="/authors/renee-duprey/">Renee DuPrey</a></p>
+#### [Renee DuPrey](/authors/renee-duprey/)
 
 ![Creme de Menthe Cake](/images/creme-de-menthe-cake.webp)
 

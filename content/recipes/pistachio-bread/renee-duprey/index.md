@@ -1,6 +1,6 @@
 # Pistachio Bread
 
-<p class="author"><a href="/authors/renee-duprey/">Renee DuPrey</a></p>
+#### [Renee DuPrey](/authors/renee-duprey/)
 
 ![Pistachio Bread](/images/pistachio-bread.webp)
 

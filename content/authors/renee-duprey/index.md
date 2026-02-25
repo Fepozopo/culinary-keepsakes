@@ -1,6 +1,6 @@
 # Renee DuPrey's Recipes
 
-<div class="recipe-header"></div>
+ 
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">
   <a href="/recipes/creme-de-menthe-cake/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">

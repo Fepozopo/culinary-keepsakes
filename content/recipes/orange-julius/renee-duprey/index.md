@@ -1,6 +1,6 @@
 # Orange Julius
 
-<p class="author"><a href="/authors/renee-duprey/">Renee DuPrey</a></p>
+#### [Renee DuPrey](/authors/renee-duprey/)
 
 ![Orange Julius](/images/orange-julius.webp)
 

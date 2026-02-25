@@ -1,6 +1,6 @@
 # Black Tie
 
-<p class="author"><a href="/authors/peets-coffee/">Peet's Coffee</a></p>
+#### [Peet's Coffee](/authors/peets-coffee/)
 
 ![Black Tie](/images/black-tie.webp)
 

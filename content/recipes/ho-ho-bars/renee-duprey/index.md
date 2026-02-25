@@ -1,6 +1,6 @@
 # Ho Ho Bars
 
-<p class="author"><a href="/authors/renee-duprey/">Renee DuPrey</a></p>
+#### [Renee DuPrey](/authors/renee-duprey/)
 
 ![Ho Ho Bars](/images/ho-ho-bars.webp)
 

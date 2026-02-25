@@ -1,6 +1,6 @@
 # Candied Cherry Cookies
 
-<p class="author"><a href="/authors/jean-navin/">Jean Navin</a></p>
+#### [Jean Navin](/authors/jean-navin/)
 
 ![Candied Cherry Cookies](/images/candied-cherry-cookies.webp)
 

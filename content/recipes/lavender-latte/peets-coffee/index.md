@@ -1,6 +1,6 @@
 # Lavender Latte
 
-<p class="author"><a href="/authors/peets-coffee/">Peet's Coffee</a></p>
+#### [Peet's Coffee](/authors/peets-coffee/)
 
 ![Lavender Latte](/images/lavender-latte.webp)
 
