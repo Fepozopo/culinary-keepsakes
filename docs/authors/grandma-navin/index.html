@@ -39,20 +39,6 @@
   </main>
 
   <script src="/oat.js" defer></script>
-  <script>
-    (function() {
-      const doc = document.documentElement;
-      const saved = localStorage.getItem('theme');
-      if (saved) doc.setAttribute('data-theme', saved);
-      else if (!doc.getAttribute('data-theme')) doc.setAttribute('data-theme','dark');
-
-      const btn = document.getElementById('theme-toggle');
-      if (btn) btn.addEventListener('click', () => {
-        const next = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        doc.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    })();
-  </script>
+  <script src="/site.js" defer></script>
 </body>
 </html>
