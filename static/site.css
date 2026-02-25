@@ -43,16 +43,25 @@
 
 /* Shrink standalone hero/image blocks on recipe pages and home page
    Targets images that are inside a paragraph which is a direct child of
-   the content container. This avoids touching card thumbnails or
-   other images inside grids. */
+   the content container. Allow them to scale down on small screens while
+   keeping a sensible max width on large viewports. */
 .container > div > p > img {
   display: block;
   margin: 0.6rem auto;
-  max-width: 720px; /* reduce full-size display */
-  max-height: 720px; /* reduce full-size display */
+  /* Constrain by both width and height while preserving aspect ratio. Use
+     the smaller of the container width and 720px as the max width so
+     images scale down on small screens but don't get enormous on desktop. */
   width: auto;
-  height: auto;
+  max-width: min(720px, 100%);
+  max-height: 60vh; /* cap very tall images so they never dominate the viewport */
+  height: auto;     /* preserve aspect ratio */
   border-radius: 6px;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  /* On very narrow screens, give the image some breathing room from the viewport edge */
+  .container > div > p > img { max-width: 92vw; max-height: 55vh; }
 }
 
 /* Author metadata styling */
