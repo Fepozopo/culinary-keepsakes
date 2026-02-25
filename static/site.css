@@ -22,3 +22,21 @@
 @media (max-width: 768px) {
   .card img { height: 160px; }
 }
+
+/* Fix for markdown-generated stray <p> wrapping block HTML
+   Some pages render <p><div> from the markdown converter; neutralize that
+   so recipe-header and row blocks aren't treated as inline and don't
+   cause layout clipping. */
+.container p { margin: 0; }
+.container p > .recipe-header,
+.container p > .row { display: block; margin: 0; }
+.container p > .row { margin-top: 1rem; }
+
+/* Ensure author cards center and don't get clipped */
+.card .card-body { text-align: center; white-space: normal; overflow: visible; padding-left: 0.75rem; padding-right: 0.75rem; }
+
+/* Prevent flex children from overflowing their containers (fix clipped text) */
+.col { min-width: 0; }
+
+/* Ensure card content isn't masked by overflow on ancestor elements */
+.card { overflow: visible; }
