@@ -1,8 +1,6 @@
 # Banana Bread
 
-<div class="recipe-header">
-  [Pernilla Stryker](/authors/pernilla-stryker/)
-</div>
+<p class="author"><a href="/authors/pernilla-stryker/">Pernilla Stryker</a></p>
 
 ![Banana Bread](/images/banana-bread.webp)
 

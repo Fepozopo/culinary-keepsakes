@@ -1,8 +1,6 @@
 # Pizza Meat Loaf
 
-<div class="recipe-header">
-  [Grandma Navin](/authors/grandma-navin/)
-</div>
+<p class="author"><a href="/authors/grandma-navin/">Grandma Navin</a></p>
 
 ![Pizza Meat Loaf](/images/pizza-meat-loaf.webp)
 

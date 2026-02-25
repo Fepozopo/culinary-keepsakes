@@ -50,7 +50,14 @@
   margin: 0.6rem auto;
   max-width: 720px; /* reduce full-size display */
   max-height: 720px; /* reduce full-size display */
-  width: 100%;
+  width: auto;
   height: auto;
   border-radius: 6px;
 }
+
+/* Author metadata styling */
+.author { font-size: 0.95rem; margin-top: 0.25rem; }
+.author a { color: inherit; text-decoration: none; }
+
+/* Subtitle headings used in listing pages */
+.subtitle { display:block; font-weight:700; margin-top:0.5rem; margin-bottom:0.5rem; }

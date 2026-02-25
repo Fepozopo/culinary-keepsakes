@@ -1,8 +1,6 @@
 # Orange Julius
 
-<div class="recipe-header">
-  [Renee DuPrey](/authors/renee-duprey/)
-</div>
+<p class="author"><a href="/authors/renee-duprey/">Renee DuPrey</a></p>
 
 ![Orange Julius](/images/orange-julius.webp)
 

@@ -1,8 +1,6 @@
 # Pinto Beans
 
-<div class="recipe-header">
-  [Aaron Franklin](/authors/aaron-franklin/)
-</div>
+<p class="author"><a href="/authors/aaron-franklin/">Aaron Franklin</a></p>
 
 ![Pinto Beans](/images/pinto-beans.webp)
 

@@ -1,8 +1,6 @@
 # Ho Ho Bars
 
-<div class="recipe-header">
-  [Renee DuPrey](/authors/renee-duprey/)
-</div>
+<p class="author"><a href="/authors/renee-duprey/">Renee DuPrey</a></p>
 
 ![Ho Ho Bars](/images/ho-ho-bars.webp)
 
