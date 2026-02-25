@@ -2,10 +2,6 @@
 
 <div class="recipe-header">
   [Peet's Coffee](/authors/peets-coffee/)
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/">HOME</a>
-    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
-  </nav>
 </div>
 
 ![Lavender Latte](/images/lavender-latte.webp)

@@ -46,7 +46,3 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <div class="author">Peet's Coffee</div>
   </a>
 </div>
-
-<div style="margin-top: 2em;">
-  Want to get in touch? <a href="/contact">Contact me here</a>.
-</div>

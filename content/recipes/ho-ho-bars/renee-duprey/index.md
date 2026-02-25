@@ -2,10 +2,6 @@
 
 <div class="recipe-header">
   [Renee DuPrey](/authors/renee-duprey/)
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/">HOME</a>
-    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
-  </nav>
 </div>
 
 ![Ho Ho Bars](/images/ho-ho-bars.webp)

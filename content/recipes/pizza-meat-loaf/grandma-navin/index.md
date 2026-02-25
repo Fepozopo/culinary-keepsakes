@@ -2,10 +2,6 @@
 
 <div class="recipe-header">
   [Grandma Navin](/authors/grandma-navin/)
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/">HOME</a>
-    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
-  </nav>
 </div>
 
 ![Pizza Meat Loaf](/images/pizza-meat-loaf.webp)

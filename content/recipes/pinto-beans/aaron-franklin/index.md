@@ -2,10 +2,6 @@
 
 <div class="recipe-header">
   [Aaron Franklin](/authors/aaron-franklin/)
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/">HOME</a>
-    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
-  </nav>
 </div>
 
 ![Pinto Beans](/images/pinto-beans.webp)

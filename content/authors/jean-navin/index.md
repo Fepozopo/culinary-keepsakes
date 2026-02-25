@@ -1,11 +1,6 @@
 # Jean Navin's Recipes
 
-<div class="recipe-header">
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/">HOME</a>
-    <a href="/all-recipes/">ALL RECIPES &gt;&gt;</a>
-  </nav>
-</div>
+<div class="recipe-header"></div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">
   <a href="/recipes/candied-cherry-cookies/jean-navin/" style="text-align: center; text-decoration: none; color: inherit;">

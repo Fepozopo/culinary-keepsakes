@@ -2,10 +2,6 @@
 
 <div class="recipe-header">
   <span class="subtitle">All Recipes (A-Z)</span>
-  <nav class="recipe-nav" aria-label="Recipe navigation">
-    <a href="/">HOME</a>
-    <a href="/authors/">AUTHORS &gt;&gt;</a>
-  </nav>
 </div>
 
 <div class="row" style="margin-top:2em; margin-bottom:2em; gap:1.5em;">
