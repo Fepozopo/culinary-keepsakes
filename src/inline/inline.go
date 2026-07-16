@@ -4,6 +4,7 @@ import (
 	"errors"
 	"regexp"
 	"strings"
+	"unicode"
 
 	"github.com/Fepozopo/culinary-keepsakes/src/nodes"
 )
@@ -172,19 +173,82 @@ func SplitNodesLink(oldNodes []nodes.TextNode) []nodes.TextNode {
 	return newNodes
 }
 
-// TextToTextNodes converts a raw string of markdown text into a list of TextNodes.
+// SplitNodesUnderscoreItalic converts underscore-delimited italic text in normal nodes while preserving underscores inside words.
+// It accepts `_text_` at Markdown word boundaries and returns all non-normal nodes unchanged.
+func SplitNodesUnderscoreItalic(oldNodes []nodes.TextNode) []nodes.TextNode {
+	newNodes := []nodes.TextNode{}
+	for _, node := range oldNodes {
+		if node.Type != nodes.Normal {
+			newNodes = append(newNodes, node)
+			continue
+		}
+
+		characters := []rune(node.Text)
+		textStart := 0
+		for index, character := range characters {
+			if character != '_' || !isOpeningUnderscoreItalic(characters, index) {
+				continue
+			}
+
+			closingIndex := findClosingUnderscoreItalic(characters, index+1)
+			if closingIndex == -1 {
+				continue
+			}
+
+			if index > textStart {
+				newNodes = append(newNodes, nodes.TextNode{Type: nodes.Normal, Text: string(characters[textStart:index]), URL: node.URL})
+			}
+			newNodes = append(newNodes, nodes.TextNode{Type: nodes.Italic, Text: string(characters[index+1 : closingIndex]), URL: node.URL})
+			textStart = closingIndex + 1
+		}
+
+		if textStart < len(characters) {
+			newNodes = append(newNodes, nodes.TextNode{Type: nodes.Normal, Text: string(characters[textStart:]), URL: node.URL})
+		}
+	}
+	return newNodes
+}
+
+// isOpeningUnderscoreItalic reports whether an underscore can start italic text without splitting a word identifier.
+func isOpeningUnderscoreItalic(characters []rune, index int) bool {
+	if index+1 >= len(characters) || unicode.IsSpace(characters[index+1]) {
+		return false
+	}
+	return index == 0 || !isWordCharacter(characters[index-1])
+}
+
+// findClosingUnderscoreItalic returns the next valid closing underscore after start or -1 when no matching delimiter exists.
+func findClosingUnderscoreItalic(characters []rune, start int) int {
+	for index := start; index < len(characters); index++ {
+		if characters[index] != '_' || index == start || unicode.IsSpace(characters[index-1]) {
+			continue
+		}
+		if index+1 == len(characters) || !isWordCharacter(characters[index+1]) {
+			return index
+		}
+	}
+	return -1
+}
+
+// isWordCharacter reports whether a rune is part of a word or identifier for underscore-delimiter boundary checks.
+func isWordCharacter(character rune) bool {
+	return unicode.IsLetter(character) || unicode.IsNumber(character) || character == '_'
+}
+
+// TextToTextNodes converts a raw Markdown string into TextNodes for images, links, code, bold text, and both italic delimiters.
 func TextToTextNodes(text string) []nodes.TextNode {
 	// Create an initial TextNode for the entire text
 	nodesList := []nodes.TextNode{
 		{Type: nodes.Normal, Text: text, URL: ""},
 	}
 
-	// Process the Markdown syntax for each type: images, links, code blocks, bold, and italic text in that order
-	nodesList = SplitNodesImage(nodesList)                           // Process images
-	nodesList = SplitNodesLink(nodesList)                            // Process links
-	nodesList, _ = SplitNodesDelimiter(nodesList, "`", nodes.Code)   // Process code blocks
-	nodesList, _ = SplitNodesDelimiter(nodesList, "**", nodes.Bold)  // Process bold text
-	nodesList, _ = SplitNodesDelimiter(nodesList, "*", nodes.Italic) // Process italic text
+	// Process Markdown syntax before emphasis so punctuation inside links, images, and code remains literal.
+	nodesList = SplitNodesImage(nodesList)                           // Process images.
+	nodesList = SplitNodesLink(nodesList)                            // Process links.
+	nodesList, _ = SplitNodesDelimiter(nodesList, "`", nodes.Code)   // Process code blocks.
+	nodesList, _ = SplitNodesDelimiter(nodesList, "**", nodes.Bold)  // Process bold text.
+	nodesList, _ = SplitNodesDelimiter(nodesList, "*", nodes.Italic) // Process asterisk italics.
+	nodesList = SplitNodesUnderscoreItalic(nodesList)                // Process underscore italics without splitting identifiers.
 
 	return nodesList
 }

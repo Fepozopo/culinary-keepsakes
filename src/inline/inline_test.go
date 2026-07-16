@@ -120,6 +120,35 @@ func TestSplitNodesDelimiter(t *testing.T) {
 	}
 }
 
+// TestSplitNodesUnderscoreItalic verifies underscore-delimited italics without treating identifier underscores as emphasis.
+func TestSplitNodesUnderscoreItalic(t *testing.T) {
+	node := nodes.TextNode{Type: nodes.Normal, Text: "Use _italics_ but preserve recipe_name.", URL: ""}
+
+	result := SplitNodesUnderscoreItalic([]nodes.TextNode{node})
+	expected := []nodes.TextNode{
+		{Type: nodes.Normal, Text: "Use ", URL: ""},
+		{Type: nodes.Italic, Text: "italics", URL: ""},
+		{Type: nodes.Normal, Text: " but preserve recipe_name.", URL: ""},
+	}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+// TestTextToTextNodesSupportsUnderscoreItalic verifies the full inline parser recognizes underscore-delimited italics.
+func TestTextToTextNodesSupportsUnderscoreItalic(t *testing.T) {
+	result := TextToTextNodes("An _italic_ word")
+	expected := []nodes.TextNode{
+		{Type: nodes.Normal, Text: "An ", URL: ""},
+		{Type: nodes.Italic, Text: "italic", URL: ""},
+		{Type: nodes.Normal, Text: " word", URL: ""},
+	}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+// TestExtractMarkdownImages verifies image URL and alternative-text extraction.
 func TestExtractMarkdownImages(t *testing.T) {
 	t.Run("extract_markdown_images", func(t *testing.T) {
 		text := "This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif) and ![obi wan](https://i.imgur.com/fJRm4Vk.jpeg)"
