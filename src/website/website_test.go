@@ -74,7 +74,9 @@ func TestGenerateContentIndexesBuildsMetadataDrivenListings(t *testing.T) {
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorsTemplateFile), "# Authors\n\n{{ Authors }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorTemplateFile), "# {{ Author }}'s Recipes\n\n{{ Author Recipes }}\n")
 	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "apple.webp"), "image")
+	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "apple-card.webp"), "thumbnail")
 	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "zucchini.webp"), "image")
+	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "zucchini-card.webp"), "thumbnail")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "recipes", "apple", "alice", "index.md"), `---
 title: Apple Pie
 author: Alice Example
@@ -106,6 +108,9 @@ image: zucchini.webp
 	if strings.Index(homepage, "Zucchini Bread") > strings.Index(homepage, "Apple Pie") {
 		t.Error("homepage recipes are not ordered newest first")
 	}
+	if !strings.Contains(homepage, "/images/zucchini-card.webp") || !strings.Contains(homepage, "loading=\"lazy\"") || !strings.Contains(homepage, "decoding=\"async\"") {
+		t.Error("homepage recipe cards do not use optimized lazy-loaded thumbnails")
+	}
 
 	allRecipes := readWebsiteTestFile(t, filepath.Join(contentDir, "all-recipes", "index.md"))
 	if strings.Index(allRecipes, "Apple Pie") > strings.Index(allRecipes, "Zucchini Bread") {
@@ -123,8 +128,8 @@ image: zucchini.webp
 	}
 }
 
-// TestGenerateContentIndexesRejectsMissingListingImage verifies that recipes cannot generate listings without an available image.
-func TestGenerateContentIndexesRejectsMissingListingImage(t *testing.T) {
+// TestGenerateContentIndexesRejectsMissingCardThumbnail verifies that recipes cannot generate listings without an available card thumbnail.
+func TestGenerateContentIndexesRejectsMissingCardThumbnail(t *testing.T) {
 	rootDir := t.TempDir()
 	contentDir := filepath.Join(rootDir, "content")
 
@@ -132,6 +137,7 @@ func TestGenerateContentIndexesRejectsMissingListingImage(t *testing.T) {
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", allRecipesTemplateFile), "# All Recipes\n\n{{ All Recipes }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorsTemplateFile), "# Authors\n\n{{ Authors }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorTemplateFile), "# {{ Author }}'s Recipes\n\n{{ Author Recipes }}\n")
+	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "missing.webp"), "image")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "recipes", "missing-image", "example", "index.md"), `---
 title: Missing Image
 author: Example Author
@@ -145,8 +151,8 @@ image: missing.webp
 `)
 
 	err := GenerateContentIndexes(contentDir)
-	if err == nil || !strings.Contains(err.Error(), "listing image") {
-		t.Fatalf("expected a missing listing image error, got %v", err)
+	if err == nil || !strings.Contains(err.Error(), "card thumbnail") {
+		t.Fatalf("expected a missing card thumbnail error, got %v", err)
 	}
 }
 

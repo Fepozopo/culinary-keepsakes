@@ -15,36 +15,38 @@ BACKUP_DIR="backup/original_images/"
 mkdir -p "$DEST_DIR"
 mkdir -p "$BACKUP_DIR"
 
-# Quality setting for WebP conversion (adjust as needed, lower value = more compression, lower quality)
-QUALITY="80"
+# Image dimensions and quality balance recipe-page clarity against faster card loading.
+FULL_MAX_DIMENSION="1600"
+FULL_QUALITY="80"
+CARD_DIMENSION="600"
+CARD_QUALITY="75"
+CONVERSION_FAILED=0
 
-# Find all PNG and JPEG files in the source directory
-find "$SOURCE_DIR" -maxdepth 1 -type f -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" | while IFS= read -r FILE; do
-  # Extract the filename (without extension)
+# Generate both assets before backing up an original so a failed thumbnail conversion never loses source material.
+while IFS= read -r -d '' FILE; do
   FILENAME=$(basename "$FILE")
   FILENAME_WITHOUT_EXT="${FILENAME%.*}"
+  FULL_OUTPUT_FILE="$DEST_DIR/$FILENAME_WITHOUT_EXT.webp"
+  CARD_OUTPUT_FILE="$DEST_DIR/$FILENAME_WITHOUT_EXT-card.webp"
 
-  # Construct the output filename in the destination directory (WebP format)
-  OUTPUT_FILE="$DEST_DIR/$FILENAME_WITHOUT_EXT.webp"
-
-  # Convert the image to WebP using ImageMagick's magick command
-  echo "Processing: $FILE -> $OUTPUT_FILE"
-  magick "$FILE" -strip -quality "$QUALITY" "$OUTPUT_FILE"
-
-  # Check if the conversion was successful
-  if [ $? -eq 0 ]; then
-    echo "Successfully converted: $OUTPUT_FILE"
+  echo "Processing: $FILE -> $FULL_OUTPUT_FILE and $CARD_OUTPUT_FILE"
+  if magick "$FILE" -strip -resize "${FULL_MAX_DIMENSION}x${FULL_MAX_DIMENSION}>" -quality "$FULL_QUALITY" "$FULL_OUTPUT_FILE" && \
+    magick "$FILE" -strip -resize "${CARD_DIMENSION}x${CARD_DIMENSION}^" -gravity center -extent "${CARD_DIMENSION}x${CARD_DIMENSION}" -quality "$CARD_QUALITY" "$CARD_OUTPUT_FILE"; then
+    # Only move the original after both published assets exist.
+    mv "$FILE" "$BACKUP_DIR"
+    echo "Successfully created recipe and card images for: $FILENAME"
   else
-    echo "Error converting: $FILE"
+    echo "Error creating recipe and card images for: $FILE"
+    CONVERSION_FAILED=1
   fi
-done
+done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" \) -print0)
 
-# Move all the new images to the backup directory
-mv "$SOURCE_DIR"*.png "$BACKUP_DIR"
-mv "$SOURCE_DIR"*.jpeg "$BACKUP_DIR"
-mv "$SOURCE_DIR"*.jpg "$BACKUP_DIR"
+if [ "$CONVERSION_FAILED" -ne 0 ]; then
+  echo "Image processing failed; original files remain in $SOURCE_DIR."
+  exit 1
+fi
 
-echo "Image processing complete. New images have been backed up."
+echo "Image processing complete. Original images have been backed up."
 
 # Compile the Go application.
 go build -o bin/app src/main.go

@@ -19,13 +19,14 @@ const (
 	authorTemplateFile     = "author.md"
 )
 
-// Recipe is the validated metadata and public URL for one recipe source file.
+// Recipe is the validated metadata, optimized image filenames, and public URL for one recipe source file.
 type Recipe struct {
 	Title      string
 	Author     string
 	AuthorSlug string
 	DateAdded  time.Time
 	Image      string
+	CardImage  string
 	URL        string
 }
 
@@ -189,8 +190,15 @@ func parseRecipe(recipePath, recipeDirPath, staticImagesDirPath string) (Recipe,
 	if filepath.Base(image) != image || image == "." {
 		return Recipe{}, fmt.Errorf("recipe %q: image must be a filename in static/images", recipePath)
 	}
+	if strings.ToLower(filepath.Ext(image)) != ".webp" {
+		return Recipe{}, fmt.Errorf("recipe %q: image must reference the WebP recipe-page version", recipePath)
+	}
 	if _, err := os.Stat(filepath.Join(staticImagesDirPath, image)); err != nil {
-		return Recipe{}, fmt.Errorf("recipe %q: listing image %q is unavailable: %w", recipePath, image, err)
+		return Recipe{}, fmt.Errorf("recipe %q: recipe-page image %q is unavailable: %w", recipePath, image, err)
+	}
+	cardImage := cardImageFilename(image)
+	if _, err := os.Stat(filepath.Join(staticImagesDirPath, cardImage)); err != nil {
+		return Recipe{}, fmt.Errorf("recipe %q: card thumbnail %q is unavailable: %w", recipePath, cardImage, err)
 	}
 	if !strings.Contains(body, "/images/"+image) {
 		return Recipe{}, fmt.Errorf("recipe %q: listing image %q must also appear in the recipe body", recipePath, image)
@@ -224,8 +232,14 @@ func parseRecipe(recipePath, recipeDirPath, staticImagesDirPath string) (Recipe,
 		AuthorSlug: authorSlug,
 		DateAdded:  parsedDate,
 		Image:      image,
+		CardImage:  cardImage,
 		URL:        "/recipes/" + filepath.ToSlash(relativeRecipeDir) + "/",
 	}, nil
+}
+
+// cardImageFilename returns the thumbnail filename generated beside a recipe's full WebP image.
+func cardImageFilename(image string) string {
+	return strings.TrimSuffix(image, filepath.Ext(image)) + "-card.webp"
 }
 
 // parseFrontMatter separates an optional YAML-style metadata block from a Markdown document body.
@@ -362,34 +376,34 @@ func writeGeneratedContent(path, content string) error {
 	return nil
 }
 
-// renderRecipeGridCards returns recipe links for the homepage and author-page grid layouts.
+// renderRecipeGridCards returns lazily loaded recipe-thumbnail links for the homepage and author-page grid layouts.
 func renderRecipeGridCards(recipes []Recipe) string {
 	var cards strings.Builder
 	for _, recipe := range recipes {
 		fmt.Fprintf(&cards, `  <a href="%s" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/%s" alt="%s" style="width: 100%%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <img src="/images/%s" alt="%s" loading="lazy" decoding="async" style="width: 100%%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">%s</div>
     <div class="author">%s</div>
   </a>
-`, recipe.URL, html.EscapeString(recipe.Image), html.EscapeString(recipe.Title), html.EscapeString(recipe.Title), html.EscapeString(recipe.Author))
+`, recipe.URL, html.EscapeString(recipe.CardImage), html.EscapeString(recipe.Title), html.EscapeString(recipe.Title), html.EscapeString(recipe.Author))
 	}
 	return strings.TrimSuffix(cards.String(), "\n")
 }
 
-// renderRecipeCatalogCards returns recipe cards for the all-recipes catalog layout.
+// renderRecipeCatalogCards returns lazily loaded recipe-thumbnail cards for the all-recipes catalog layout.
 func renderRecipeCatalogCards(recipes []Recipe) string {
 	var cards strings.Builder
 	for _, recipe := range recipes {
 		fmt.Fprintf(&cards, `  <div class="col col-4">
     <a class="card card-link" href="%s">
-      <img src="/images/%s" alt="%s">
+      <img src="/images/%s" alt="%s" loading="lazy" decoding="async">
       <div class="card-body">
         <div style="font-weight:bold;">%s</div>
         <div class="author">%s</div>
       </div>
     </a>
   </div>
-`, recipe.URL, html.EscapeString(recipe.Image), html.EscapeString(recipe.Title), html.EscapeString(recipe.Title), html.EscapeString(recipe.Author))
+`, recipe.URL, html.EscapeString(recipe.CardImage), html.EscapeString(recipe.Title), html.EscapeString(recipe.Title), html.EscapeString(recipe.Author))
 	}
 	return strings.TrimSuffix(cards.String(), "\n")
 }

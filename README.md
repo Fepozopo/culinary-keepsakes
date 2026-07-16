@@ -31,7 +31,7 @@ Culinary Keepsakes is a project designed to store recipes I've come across over 
    ---
    ```
    The `date_added` value is the date the recipe was added to this site and should not change when the recipe is edited. The title must match the recipe's `#` heading, and the declared image must also appear in the recipe body.
-2. Place the source image in `new_images/` before running the build script. The script converts it to WebP in `static/images/`; use that resulting `.webp` filename in both the metadata and recipe image Markdown.
+2. Place the source image in `new_images/` before running the build script. The script creates a resized recipe-page WebP image (`recipe-image.webp`) and a 600×600 cropped card thumbnail (`recipe-image-card.webp`) in `static/images/`, then moves the original to `backup/original_images/`. Use the recipe-page `.webp` filename in both the metadata and recipe image Markdown; card pages use the derived thumbnail automatically.
 3. Build the project:
    ```bash
    ./build.sh
