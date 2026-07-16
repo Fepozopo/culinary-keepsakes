@@ -1,3 +1,10 @@
+---
+title: Creme de Menthe Cake
+author: Renee DuPrey
+date_added: 2026-01-09
+image: creme-de-menthe-cake.webp
+---
+
 # Creme de Menthe Cake
 
 #### [Renee DuPrey](/authors/renee-duprey/)

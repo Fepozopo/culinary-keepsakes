@@ -1,3 +1,10 @@
+---
+title: Banana Bread
+author: Pernilla Stryker
+date_added: 2025-04-07
+image: banana-bread.webp
+---
+
 # Banana Bread
 
 #### [Pernilla Stryker](/authors/pernilla-stryker/)

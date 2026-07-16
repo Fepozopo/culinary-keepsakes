@@ -1,3 +1,10 @@
+---
+title: Pizza Meat Loaf
+author: Grandma Navin
+date_added: 2026-01-09
+image: pizza-meat-loaf.webp
+---
+
 # Pizza Meat Loaf
 
 #### [Grandma Navin](/authors/grandma-navin/)

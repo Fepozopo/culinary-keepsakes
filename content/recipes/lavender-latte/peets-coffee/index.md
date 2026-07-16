@@ -1,3 +1,10 @@
+---
+title: Lavender Latte
+author: Peet's Coffee
+date_added: 2025-05-05
+image: lavender-latte.webp
+---
+
 # Lavender Latte
 
 #### [Peet's Coffee](/authors/peets-coffee/)

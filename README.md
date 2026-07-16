@@ -21,16 +21,23 @@ Culinary Keepsakes is a project designed to store recipes I've come across over 
 
 ## Usage
 
-1. Add new recipes by creating a new folder in `content/recipes` and adding a markdown file with the recipe details.
-2. Place any new images in the `new_images` folder before running the build script. This ensures they are processed and included correctly.
-3. Add the recipe to the all-recipes index by editing `content/all-recipes/index.md` to include a link to the new recipe.
-4. Update the homepage `content/index.md` to feature the new recipe. Recipe entries should be added in the grid layout section, which should show the most recent recipes.
-5. Build the project using the updated `build.sh` script:
+1. Add a recipe Markdown file at `content/recipes/<recipe-slug>/<author-slug>/index.md`. Begin the file with the required metadata:
+   ```md
+   ---
+   title: Recipe Title
+   author: Author Name
+   date_added: YYYY-MM-DD
+   image: recipe-image.webp
+   ---
+   ```
+   The `date_added` value is the date the recipe was added to this site and should not change when the recipe is edited. The title must match the recipe's `#` heading, and the declared image must also appear in the recipe body.
+2. Place the source image in `new_images/` before running the build script. The script converts it to WebP in `static/images/`; use that resulting `.webp` filename in both the metadata and recipe image Markdown.
+3. Build the project:
    ```bash
    ./build.sh
    ```
-   The script will generate the necessary files and start a local server.
-6. Open your browser and navigate to `http://localhost:8080/`.
+   The build regenerates `content/index.md`, `content/all-recipes/index.md`, and all author listing pages before producing the committed HTML files under `docs/`. It automatically creates an author page when a recipe introduces a new author.
+4. Optionally choose to run the local server, then open `http://localhost:8080/`.
 
 ## Contributing
 

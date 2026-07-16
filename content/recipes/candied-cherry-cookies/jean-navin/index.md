@@ -1,3 +1,10 @@
+---
+title: Candied Cherry Cookies
+author: Jean Navin
+date_added: 2025-04-08
+image: candied-cherry-cookies.webp
+---
+
 # Candied Cherry Cookies
 
 #### [Jean Navin](/authors/jean-navin/)

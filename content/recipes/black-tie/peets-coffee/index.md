@@ -1,3 +1,10 @@
+---
+title: Black Tie
+author: Peet's Coffee
+date_added: 2025-05-05
+image: black-tie.webp
+---
+
 # Black Tie
 
 #### [Peet's Coffee](/authors/peets-coffee/)

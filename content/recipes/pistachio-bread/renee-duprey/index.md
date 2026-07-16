@@ -1,3 +1,10 @@
+---
+title: Pistachio Bread
+author: Renee DuPrey
+date_added: 2025-04-10
+image: pistachio-bread.webp
+---
+
 # Pistachio Bread
 
 #### [Renee DuPrey](/authors/renee-duprey/)

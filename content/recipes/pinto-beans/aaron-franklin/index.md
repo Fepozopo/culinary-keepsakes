@@ -1,3 +1,10 @@
+---
+title: Pinto Beans
+author: Aaron Franklin
+date_added: 2025-04-09
+image: pinto-beans.webp
+---
+
 # Pinto Beans
 
 #### [Aaron Franklin](/authors/aaron-franklin/)

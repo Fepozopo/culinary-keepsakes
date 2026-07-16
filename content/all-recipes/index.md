@@ -5,7 +5,6 @@
 </div>
 
 <div class="row" style="margin-top:2em; margin-bottom:2em; gap:1.5em;">
-  <!-- Alphabetical order -->
   <div class="col col-4">
     <a class="card card-link" href="/recipes/banana-bread/pernilla-stryker/">
       <img src="/images/banana-bread.webp" alt="Banana Bread">
@@ -20,7 +19,7 @@
       <img src="/images/black-tie.webp" alt="Black Tie">
       <div class="card-body">
         <div style="font-weight:bold;">Black Tie</div>
-        <div class="author">Peet's Coffee</div>
+        <div class="author">Peet&#39;s Coffee</div>
       </div>
     </a>
   </div>
@@ -65,7 +64,7 @@
       <img src="/images/lavender-latte.webp" alt="Lavender Latte">
       <div class="card-body">
         <div style="font-weight:bold;">Lavender Latte</div>
-        <div class="author">Peet's Coffee</div>
+        <div class="author">Peet&#39;s Coffee</div>
       </div>
     </a>
   </div>

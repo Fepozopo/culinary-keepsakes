@@ -91,10 +91,9 @@ func ExtractTitle(markdown string) (string, error) {
 	return "", errors.New("no h1 header found")
 }
 
-// GeneratePage generates an HTML page from a markdown file using a template.
-// It reads the markdown file, converts it to HTML, and replaces placeholders in the template.
-// The generated HTML is written to the destination path.
-// The basepath is used to replace href and src attributes in the generated HTML.
+// GeneratePage generates an HTML page from a Markdown file using a template.
+// It removes optional recipe metadata before converting Markdown, writes the rendered page to destPath,
+// and prefixes root-relative links with basepath.
 func GeneratePage(fromPath, templatePath, destPath, basepath string) error {
 	// Print a message to indicate that the page is being generated
 	fmt.Printf("Generating page: %s -> %s using template: %s\n", fromPath, destPath, templatePath)
@@ -105,21 +104,27 @@ func GeneratePage(fromPath, templatePath, destPath, basepath string) error {
 		return fmt.Errorf("failed to read markdown file: %w", err)
 	}
 
+	// Metadata drives listing generation but must not become visible recipe-page content.
+	contentMarkdown, err := stripFrontMatter(string(markdown))
+	if err != nil {
+		return fmt.Errorf("failed to parse markdown metadata: %w", err)
+	}
+
 	// Read the template file
 	template, err := os.ReadFile(templatePath)
 	if err != nil {
 		return fmt.Errorf("failed to read template file: %w", err)
 	}
 
-	// Convert the markdown to an HTML string
-	htmlNode := blocks.MarkdownToHTMLNode(string(markdown))
+	// Convert the Markdown body to an HTML string.
+	htmlNode := blocks.MarkdownToHTMLNode(contentMarkdown)
 	html, err := htmlNode.ToHTML()
 	if err != nil {
 		return fmt.Errorf("failed to convert markdown to HTML: %w", err)
 	}
 
-	// Extract the title from the markdown
-	title, err := ExtractTitle(string(markdown))
+	// Extract the title from the Markdown body.
+	title, err := ExtractTitle(contentMarkdown)
 	if err != nil {
 		return fmt.Errorf("failed to extract title: %w", err)
 	}
@@ -141,9 +146,9 @@ func GeneratePage(fromPath, templatePath, destPath, basepath string) error {
 	return nil
 }
 
-// GeneratePagesRecursive generates HTML pages from markdown files in the content directory recursively.
-// It uses the specified template and writes the output to the destination directory.
-// The basepath is used to replace href and src attributes in the generated HTML.
+// GeneratePagesRecursive generates HTML pages from publishable Markdown and HTML files in contentDirPath recursively.
+// It excludes content/_templates because those files are build inputs rather than public pages, writes output to destDirPath,
+// and prefixes root-relative links with basepath.
 func GeneratePagesRecursive(contentDirPath, templatePath, destDirPath, basepath string) error {
 	// Ensure the destination directory exists
 	err := os.MkdirAll(destDirPath, os.ModePerm)
@@ -157,7 +162,12 @@ func GeneratePagesRecursive(contentDirPath, templatePath, destDirPath, basepath 
 			return err
 		}
 
-		// Skip directories, but ensure subdirectories are created in the destination path
+		// Templates are source-only inputs and must never become public pages.
+		if info.IsDir() && filepath.Base(path) == "_templates" {
+			return filepath.SkipDir
+		}
+
+		// Skip directories, but ensure publishable subdirectories are created in the destination path.
 		if info.IsDir() {
 			relPath, err := filepath.Rel(contentDirPath, path)
 			if err != nil {

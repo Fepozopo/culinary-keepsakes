@@ -1,3 +1,10 @@
+---
+title: Ho Ho Bars
+author: Renee DuPrey
+date_added: 2026-01-09
+image: ho-ho-bars.webp
+---
+
 # Ho Ho Bars
 
 #### [Renee DuPrey](/authors/renee-duprey/)

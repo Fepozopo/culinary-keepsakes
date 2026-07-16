@@ -46,12 +46,18 @@ mv "$SOURCE_DIR"*.jpg "$BACKUP_DIR"
 
 echo "Image processing complete. New images have been backed up."
 
-# Compile the Go application
+# Compile the Go application.
 go build -o bin/app src/main.go
+
+# Generate the committed content and docs artifacts without requiring the optional local server.
+if ! ./bin/app --build; then
+  echo "Site generation failed."
+  exit 1
+fi
 
 echo "Build successful."
 
-# Ask the user if they want to run the application
+# Ask the user if they want to run the application.
 while true; do
     read -p "Do you want to run the application? (y/n): " RUN_APP
     if [[ "$RUN_APP" == "y" || "$RUN_APP" == "Y" ]]; then
