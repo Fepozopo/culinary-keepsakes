@@ -150,6 +150,21 @@ image: missing.webp
 	}
 }
 
+// TestSortRecipesByTitleUsesAuthorAsTieBreaker verifies identical titles sort by their authors before URLs.
+func TestSortRecipesByTitleUsesAuthorAsTieBreaker(t *testing.T) {
+	recipes := []Recipe{
+		{Title: "Chocolate Chip Cookies", Author: "Zed Baker", URL: "/recipes/cookies/zed/"},
+		{Title: "Chocolate Chip Cookies", Author: "Alice Baker", URL: "/recipes/cookies/alice/"},
+		{Title: "Apple Pie", Author: "Zed Baker", URL: "/recipes/apple-pie/zed/"},
+	}
+
+	sortRecipesByTitle(recipes)
+
+	if recipes[0].Title != "Apple Pie" || recipes[1].Author != "Alice Baker" || recipes[2].Author != "Zed Baker" {
+		t.Fatalf("recipes were not ordered by title and then author: %#v", recipes)
+	}
+}
+
 // writeWebsiteTestFile creates a test fixture file and its parent directories.
 func writeWebsiteTestFile(t *testing.T, path, content string) {
 	t.Helper()

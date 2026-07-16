@@ -291,15 +291,20 @@ func groupRecipesByAuthor(recipes []Recipe) (map[string][]Recipe, []string, erro
 	return recipesByAuthor, authors, nil
 }
 
-// sortRecipesByTitle orders recipes by case-insensitive title and uses their URLs to resolve equal titles deterministically.
+// sortRecipesByTitle orders recipes by case-insensitive title, then author name, and finally URL for fully equal entries.
 func sortRecipesByTitle(recipes []Recipe) {
 	sort.Slice(recipes, func(left, right int) bool {
 		leftTitle := strings.ToLower(recipes[left].Title)
 		rightTitle := strings.ToLower(recipes[right].Title)
-		if leftTitle == rightTitle {
-			return recipes[left].URL < recipes[right].URL
+		if leftTitle != rightTitle {
+			return leftTitle < rightTitle
 		}
-		return leftTitle < rightTitle
+		leftAuthor := strings.ToLower(recipes[left].Author)
+		rightAuthor := strings.ToLower(recipes[right].Author)
+		if leftAuthor != rightAuthor {
+			return leftAuthor < rightAuthor
+		}
+		return recipes[left].URL < recipes[right].URL
 	})
 }
 
