@@ -6,6 +6,24 @@
 
 <div class="row" style="margin-top:2em; margin-bottom:2em; gap:1.5em;">
   <div class="col col-4">
+    <a class="card card-link" href="/recipes/apple-juice-spice-cake/natalie-koive-dillon/">
+      <img src="/images/apple-juice-spice-cake-card.webp" alt="Apple Juice Spice Cake" loading="lazy" decoding="async">
+      <div class="card-body">
+        <div style="font-weight:bold;">Apple Juice Spice Cake</div>
+        <div class="author">Natalie Koive (Dillon)</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/baklava/natalie-koive-dillon/">
+      <img src="/images/baklava-card.webp" alt="Baklava" loading="lazy" decoding="async">
+      <div class="card-body">
+        <div style="font-weight:bold;">Baklava</div>
+        <div class="author">Natalie Koive (Dillon)</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
     <a class="card card-link" href="/recipes/banana-bread/pernilla-stryker/">
       <img src="/images/banana-bread-card.webp" alt="Banana Bread" loading="lazy" decoding="async">
       <div class="card-body">
@@ -47,6 +65,15 @@
       <div class="card-body">
         <div style="font-weight:bold;">Creme de Menthe Cake</div>
         <div class="author">Renee DuPrey</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/greek-pasteli/natalie-koive-dillon/">
+      <img src="/images/greek-pasteli-card.webp" alt="Greek Pasteli" loading="lazy" decoding="async">
+      <div class="card-body">
+        <div style="font-weight:bold;">Greek Pasteli</div>
+        <div class="author">Natalie Koive (Dillon)</div>
       </div>
     </a>
   </div>
