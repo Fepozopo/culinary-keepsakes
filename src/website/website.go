@@ -55,19 +55,28 @@ func CopyStaticToPublic() error {
 	return err
 }
 
-// copyFile copies a file from src to dst
-func copyFile(src, dst string) error {
+// copyFile copies the file at src to dst and returns any copy or close error.
+func copyFile(src, dst string) (err error) {
 	sourceFile, err := os.Open(src)
 	if err != nil {
 		return err
 	}
-	defer sourceFile.Close()
+	defer func() {
+		if err == nil {
+			err = sourceFile.Close()
+		}
+	}()
 
 	destinationFile, err := os.Create(dst)
 	if err != nil {
 		return err
 	}
-	defer destinationFile.Close()
+	defer func() {
+		// Closing may flush buffered data, so report that failure when copying succeeded.
+		if err == nil {
+			err = destinationFile.Close()
+		}
+	}()
 
 	_, err = io.Copy(destinationFile, sourceFile)
 	return err
