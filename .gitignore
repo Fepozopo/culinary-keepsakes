@@ -1,3 +1,4 @@
 bin/
 backup/
 .codebase-memory/
+**/.DS_Store

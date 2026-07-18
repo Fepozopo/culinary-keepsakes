@@ -78,6 +78,15 @@
     </a>
   </div>
   <div class="col col-4">
+    <a class="card card-link" href="/recipes/harvest-apple-ginger/sassenach-spirits/">
+      <img src="/images/harvest-apple-ginger-card.webp" alt="Harvest Apple Ginger" loading="lazy" decoding="async">
+      <div class="card-body">
+        <div style="font-weight:bold;">Harvest Apple Ginger</div>
+        <div class="author">Sassenach Spirits</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
     <a class="card card-link" href="/recipes/ho-ho-bars/renee-duprey/">
       <img src="/images/ho-ho-bars-card.webp" alt="Ho Ho Bars" loading="lazy" decoding="async">
       <div class="card-body">
