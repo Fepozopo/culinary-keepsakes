@@ -12,6 +12,11 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <div style="margin-top: 0.5em; font-weight: bold;">Harvest Apple Ginger</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/penicillin/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/penicillin-card.webp" alt="Penicillin" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Penicillin</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/scotsmans-eggnog/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/scotsmans-eggnog-card.webp" alt="Scotsman&#39;s Eggnog" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Scotsman&#39;s Eggnog</div>
@@ -31,10 +36,5 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <img src="/images/greek-pasteli-card.webp" alt="Greek Pasteli" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Greek Pasteli</div>
     <div class="author">Natalie Koive (Dillon)</div>
-  </a>
-  <a href="/recipes/creme-de-menthe-cake/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/creme-de-menthe-cake-card.webp" alt="Creme de Menthe Cake" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Creme de Menthe Cake</div>
-    <div class="author">Renee DuPrey</div>
   </a>
 </div>
