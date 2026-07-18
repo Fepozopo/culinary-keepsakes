@@ -1,6 +1,6 @@
 #!/bin/bash
-# This script converts images from PNG and JPEG formats to WebP format using ImageMagick.
-# It also moves the original images to a backup directory.
+# This script processes PNG, JPEG, and WebP images into optimized WebP assets using ImageMagick.
+# It also moves the original source images to a backup directory.
 
 # Source directory for the original images
 SOURCE_DIR="new_images/"
@@ -39,7 +39,7 @@ while IFS= read -r -d '' FILE; do
     echo "Error creating recipe and card images for: $FILE"
     CONVERSION_FAILED=1
   fi
-done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" \) -print0)
+done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" -o -name "*.webp" \) -print0)
 
 if [ "$CONVERSION_FAILED" -ne 0 ]; then
   echo "Image processing failed; original files remain in $SOURCE_DIR."
