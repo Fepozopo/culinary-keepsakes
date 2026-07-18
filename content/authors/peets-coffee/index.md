@@ -11,4 +11,9 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Lavender Latte</div>
     <div class="author">Peet&#39;s Coffee</div>
   </a>
+  <a href="/recipes/major-coffee-rub/peets-coffee/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/major-coffee-rub-card.webp" alt="Major Coffee Rub" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Major Coffee Rub</div>
+    <div class="author">Peet&#39;s Coffee</div>
+  </a>
 </div>
