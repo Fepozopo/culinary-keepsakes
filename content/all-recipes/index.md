@@ -60,6 +60,15 @@
     </a>
   </div>
   <div class="col col-4">
+    <a class="card card-link" href="/recipes/cranachan/sassenach-spirits/">
+      <img src="/images/cranachan-card.webp" alt="Cranachan" loading="lazy" decoding="async">
+      <div class="card-body">
+        <div style="font-weight:bold;">Cranachan</div>
+        <div class="author">Sassenach Spirits</div>
+      </div>
+    </a>
+  </div>
+  <div class="col col-4">
     <a class="card card-link" href="/recipes/creme-de-menthe-cake/renee-duprey/">
       <img src="/images/creme-de-menthe-cake-card.webp" alt="Creme de Menthe Cake" loading="lazy" decoding="async">
       <div class="card-body">
