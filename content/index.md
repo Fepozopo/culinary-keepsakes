@@ -12,6 +12,11 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <div style="margin-top: 0.5em; font-weight: bold;">Harvest Apple Ginger</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/scotsmans-eggnog/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/scotsmans-eggnog-card.webp" alt="Scotsman&#39;s Eggnog" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Scotsman&#39;s Eggnog</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/apple-juice-spice-cake/natalie-koive-dillon/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/apple-juice-spice-cake-card.webp" alt="Apple Juice Spice Cake" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Apple Juice Spice Cake</div>
@@ -30,11 +35,6 @@ This is a collection of recipes that I have come across in my life. Some are my 
   <a href="/recipes/creme-de-menthe-cake/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/creme-de-menthe-cake-card.webp" alt="Creme de Menthe Cake" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Creme de Menthe Cake</div>
-    <div class="author">Renee DuPrey</div>
-  </a>
-  <a href="/recipes/ho-ho-bars/renee-duprey/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/ho-ho-bars-card.webp" alt="Ho Ho Bars" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Ho Ho Bars</div>
     <div class="author">Renee DuPrey</div>
   </a>
 </div>
