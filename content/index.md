@@ -12,6 +12,11 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <div style="margin-top: 0.5em; font-weight: bold;">Cannon Fodder</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/emerald-letter/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/emerald-letter-card.webp" alt="Emerald Letter" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Emerald Letter</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/hidden-history/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/hidden-history-card.webp" alt="Hidden History" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Hidden History</div>
@@ -30,11 +35,6 @@ This is a collection of recipes that I have come across in my life. Some are my 
   <a href="/recipes/friend-or-foe/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/friend-or-foe-card.webp" alt="Friend Or Foe" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Friend Or Foe</div>
-    <div class="author">Sassenach Spirits</div>
-  </a>
-  <a href="/recipes/weak-at-the-bees-knees/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/weak-at-the-bees-knees-card.webp" alt="Weak at the Bee’s Knees" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Weak at the Bee’s Knees</div>
     <div class="author">Sassenach Spirits</div>
   </a>
 </div>
