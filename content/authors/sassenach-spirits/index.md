@@ -6,6 +6,11 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Bear Necessities</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/cannon-fodder/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/cannon-fodder-card.webp" alt="Cannon Fodder" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Cannon Fodder</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/cranachan/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/cranachan-card.webp" alt="Cranachan" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Cranachan</div>
