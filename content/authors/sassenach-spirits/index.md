@@ -46,6 +46,11 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Hidden History</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/jamie-fraser-vesper/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/jamie-fraser-vesper-card.webp" alt="Jamie Fraser Vesper" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Jamie Fraser Vesper</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/penicillin/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/penicillin-card.webp" alt="Penicillin" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Penicillin</div>

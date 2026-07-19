@@ -32,9 +32,9 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <div style="margin-top: 0.5em; font-weight: bold;">Hidden History</div>
     <div class="author">Sassenach Spirits</div>
   </a>
-  <a href="/recipes/sauerkraut/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/sauerkraut-card.webp" alt="Sauerkraut" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Sauerkraut</div>
+  <a href="/recipes/jamie-fraser-vesper/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/jamie-fraser-vesper-card.webp" alt="Jamie Fraser Vesper" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Jamie Fraser Vesper</div>
     <div class="author">Sassenach Spirits</div>
   </a>
 </div>
