@@ -12,6 +12,11 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <div style="margin-top: 0.5em; font-weight: bold;">Cannon Fodder</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/hidden-history/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/hidden-history-card.webp" alt="Hidden History" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Hidden History</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/sauerkraut/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/sauerkraut-card.webp" alt="Sauerkraut" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Sauerkraut</div>
@@ -31,10 +36,5 @@ This is a collection of recipes that I have come across in my life. Some are my 
     <img src="/images/weak-at-the-bees-knees-card.webp" alt="Weak at the Bee’s Knees" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Weak at the Bee’s Knees</div>
     <div class="author">Sassenach Spirits</div>
-  </a>
-  <a href="/recipes/coffee-ice-cream-sandwiches/peets-coffee/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/coffee-ice-cream-sandwiches-card.webp" alt="Coffee Ice Cream Sandwiches" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Coffee Ice Cream Sandwiches</div>
-    <div class="author">Peet&#39;s Coffee</div>
   </a>
 </div>
