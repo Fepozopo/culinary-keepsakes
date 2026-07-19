@@ -21,4 +21,9 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Scotsman&#39;s Eggnog</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/weak-at-the-bees-knees/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/weak-at-the-bees-knees-card.webp" alt="Weak at the Bee’s Knees" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Weak at the Bee’s Knees</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
 </div>
