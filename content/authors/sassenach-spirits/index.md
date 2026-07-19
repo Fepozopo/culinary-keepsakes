@@ -56,6 +56,11 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Penicillin</div>
     <div class="author">Sassenach Spirits</div>
   </a>
+  <a href="/recipes/sassenach-carajillo/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/sassenach-carajillo-card.webp" alt="Sassenach Carajillo" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Sassenach Carajillo</div>
+    <div class="author">Sassenach Spirits</div>
+  </a>
   <a href="/recipes/sauerkraut/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/sauerkraut-card.webp" alt="Sauerkraut" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Sauerkraut</div>
