@@ -3,6 +3,7 @@ title: Bear Necessities
 author: Sassenach Spirits
 date_added: 2026-07-18
 image: bear-necessities.webp
+categories: [Cocktail]
 ---
 
 # Bear Necessities

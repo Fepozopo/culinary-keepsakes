@@ -3,6 +3,7 @@ title: Emerald Letter
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: emerald-letter.webp
+categories: [Cocktail, Scottish]
 ---
 
 # Emerald Letter

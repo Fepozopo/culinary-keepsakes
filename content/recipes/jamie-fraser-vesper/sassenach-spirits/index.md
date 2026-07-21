@@ -3,6 +3,7 @@ title: Jamie Fraser Vesper
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: jamie-fraser-vesper.webp
+categories: [Cocktail]
 ---
 
 # Jamie Fraser Vesper

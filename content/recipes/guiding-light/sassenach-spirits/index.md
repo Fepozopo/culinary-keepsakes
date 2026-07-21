@@ -3,6 +3,7 @@ title: Guiding Light
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: guiding-light.webp
+categories: [Cocktail, Scottish]
 ---
 
 # Guiding Light

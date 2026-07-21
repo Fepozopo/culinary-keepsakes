@@ -3,6 +3,7 @@ title: Scotsman's Eggnog
 author: Sassenach Spirits
 date_added: 2026-07-17
 image: scotsmans-eggnog.webp
+categories: [Cocktail, Holiday, Scottish]
 ---
 
 # Scotsman's Eggnog

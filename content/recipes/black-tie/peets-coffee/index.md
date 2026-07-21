@@ -3,6 +3,7 @@ title: Black Tie
 author: Peet's Coffee
 date_added: 2025-05-05
 image: black-tie.webp
+categories: [Non-Alcoholic Drink, Coffee]
 ---
 
 # Black Tie

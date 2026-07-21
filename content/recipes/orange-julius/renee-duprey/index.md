@@ -3,6 +3,7 @@ title: Orange Julius
 author: Renee DuPrey
 date_added: 2026-01-09
 image: orange-julius.webp
+categories: [Non-Alcoholic Drink]
 ---
 
 # Orange Julius

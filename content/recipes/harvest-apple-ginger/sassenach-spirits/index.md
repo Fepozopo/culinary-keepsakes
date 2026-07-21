@@ -3,6 +3,7 @@ title: Harvest Apple Ginger
 author: Sassenach Spirits
 date_added: 2026-07-17
 image: harvest-apple-ginger.webp
+categories: [Cocktail, Holiday]
 ---
 
 # Harvest Apple Ginger

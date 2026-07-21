@@ -3,6 +3,7 @@ title: Sassenach Carajillo
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: sassenach-carajillo.webp
+categories: [Cocktail, Coffee]
 ---
 
 # Sassenach Carajillo

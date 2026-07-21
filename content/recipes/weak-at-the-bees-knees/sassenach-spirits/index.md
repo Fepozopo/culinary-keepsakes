@@ -3,6 +3,7 @@ title: Weak at the Bee’s Knees
 author: Sassenach Spirits
 date_added: 2026-07-18
 image: weak-at-the-bees-knees.webp
+categories: [Cocktail]
 ---
 
 # Weak at the Bee’s Knees

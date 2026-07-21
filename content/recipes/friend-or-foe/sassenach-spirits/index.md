@@ -3,6 +3,7 @@ title: Friend Or Foe
 author: Sassenach Spirits
 date_added: 2026-07-18
 image: friend-or-foe.webp
+categories: [Cocktail]
 ---
 
 # Friend Or Foe

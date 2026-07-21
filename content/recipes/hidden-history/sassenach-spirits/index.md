@@ -3,6 +3,7 @@ title: Hidden History
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: hidden-history.webp
+categories: [Cocktail]
 ---
 
 # Hidden History

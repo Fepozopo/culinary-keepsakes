@@ -3,6 +3,7 @@ title: Lavender Latte
 author: Peet's Coffee
 date_added: 2025-05-05
 image: lavender-latte.webp
+categories: [Non-Alcoholic Drink, Coffee]
 ---
 
 # Lavender Latte

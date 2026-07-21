@@ -3,6 +3,7 @@ title: Penicillin
 author: Sassenach Spirits
 date_added: 2026-07-17
 image: penicillin.webp
+categories: [Cocktail, Scottish]
 ---
 
 # Penicillin

@@ -3,6 +3,7 @@ title: Cannon Fodder
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: cannon-fodder.webp
+categories: [Cocktail]
 ---
 
 # Cannon Fodder

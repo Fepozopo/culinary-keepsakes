@@ -3,6 +3,7 @@ title: Fiery Cross
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: fiery-cross.webp
+categories: [Cocktail]
 ---
 
 # Fiery Cross
