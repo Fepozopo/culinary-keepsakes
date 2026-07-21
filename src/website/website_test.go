@@ -64,7 +64,7 @@ func TestExtractTitleWithWhitespace(t *testing.T) {
 	}
 }
 
-// TestGenerateContentIndexesBuildsMetadataDrivenListings verifies generated pages use date, title, image, and author metadata.
+// TestGenerateContentIndexesBuildsMetadataDrivenListings verifies generated pages use date, title, image, author, and category metadata.
 func TestGenerateContentIndexesBuildsMetadataDrivenListings(t *testing.T) {
 	rootDir := t.TempDir()
 	contentDir := filepath.Join(rootDir, "content")
@@ -73,6 +73,8 @@ func TestGenerateContentIndexesBuildsMetadataDrivenListings(t *testing.T) {
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", allRecipesTemplateFile), "# All Recipes\n\n{{ All Recipes }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorsTemplateFile), "# Authors\n\n{{ Authors }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorTemplateFile), "# {{ Author }}'s Recipes\n\n{{ Author Recipes }}\n")
+	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", categoriesTemplateFile), "# Categories\n\n{{ Categories }}\n")
+	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", categoryTemplateFile), "# {{ Category }} Recipes\n\n{{ Category Recipes }}\n")
 	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "apple.webp"), "image")
 	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "apple-card.webp"), "thumbnail")
 	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "zucchini.webp"), "image")
@@ -82,6 +84,7 @@ title: Apple Pie
 author: Alice Example
 date_added: 2025-01-10
 image: apple.webp
+categories: [Breakfast, Vegetarian]
 ---
 
 # Apple Pie
@@ -93,6 +96,7 @@ title: Zucchini Bread
 author: Zed Example
 date_added: 2025-02-10
 image: zucchini.webp
+categories: [Dessert, Vegetarian]
 ---
 
 # Zucchini Bread
@@ -126,6 +130,19 @@ image: zucchini.webp
 	if !strings.Contains(zedAuthorPage, "Zucchini Bread") {
 		t.Error("a new author page did not include that author's recipe")
 	}
+
+	categories := readWebsiteTestFile(t, filepath.Join(contentDir, "categories", "index.md"))
+	if strings.Index(categories, "Breakfast") > strings.Index(categories, "Dessert") || strings.Index(categories, "Dessert") > strings.Index(categories, "Vegetarian") {
+		t.Error("categories are not ordered alphabetically")
+	}
+	if !strings.Contains(categories, "Vegetarian (2 recipes)") {
+		t.Error("categories page does not show the recipe count")
+	}
+
+	vegetarianPage := readWebsiteTestFile(t, filepath.Join(contentDir, "categories", "vegetarian", "index.md"))
+	if strings.Index(vegetarianPage, "Apple Pie") > strings.Index(vegetarianPage, "Zucchini Bread") {
+		t.Error("category recipes are not ordered alphabetically")
+	}
 }
 
 // TestGenerateContentIndexesRejectsMissingCardThumbnail verifies that recipes cannot generate listings without an available card thumbnail.
@@ -137,6 +154,8 @@ func TestGenerateContentIndexesRejectsMissingCardThumbnail(t *testing.T) {
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", allRecipesTemplateFile), "# All Recipes\n\n{{ All Recipes }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorsTemplateFile), "# Authors\n\n{{ Authors }}\n")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", authorTemplateFile), "# {{ Author }}'s Recipes\n\n{{ Author Recipes }}\n")
+	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", categoriesTemplateFile), "# Categories\n\n{{ Categories }}\n")
+	writeWebsiteTestFile(t, filepath.Join(contentDir, "_templates", categoryTemplateFile), "# {{ Category }} Recipes\n\n{{ Category Recipes }}\n")
 	writeWebsiteTestFile(t, filepath.Join(rootDir, "static", "images", "missing.webp"), "image")
 	writeWebsiteTestFile(t, filepath.Join(contentDir, "recipes", "missing-image", "example", "index.md"), `---
 title: Missing Image
@@ -153,6 +172,14 @@ image: missing.webp
 	err := GenerateContentIndexes(contentDir)
 	if err == nil || !strings.Contains(err.Error(), "card thumbnail") {
 		t.Fatalf("expected a missing card thumbnail error, got %v", err)
+	}
+}
+
+// TestCategoryMetadataRejectsDuplicateValues verifies one recipe cannot list the same category more than once.
+func TestCategoryMetadataRejectsDuplicateValues(t *testing.T) {
+	_, err := categoryMetadata(map[string]string{"categories": "[Dessert, Dessert]"})
+	if err == nil || !strings.Contains(err.Error(), "duplicate category") {
+		t.Fatalf("expected a duplicate category error, got %v", err)
 	}
 }
 

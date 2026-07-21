@@ -28,15 +28,16 @@ Culinary Keepsakes is a project designed to store recipes I've come across over 
    author: Author Name
    date_added: YYYY-MM-DD
    image: recipe-image.webp
+   categories: [Dessert, Holiday]
    ---
    ```
-   The `date_added` value is the date the recipe was added to this site and should not change when the recipe is edited. The title must match the recipe's `#` heading, and the declared image must also appear in the recipe body.
+   The optional `categories` field is a free-form YAML flow list. A recipe is listed on every generated category page named in that list. The `date_added` value is the date the recipe was added to this site and should not change when the recipe is edited. The title must match the recipe's `#` heading, and the declared image must also appear in the recipe body.
 2. Place a PNG, JPEG, or WebP source image in `new_images/` before running the build script. The script creates an optimized recipe-page WebP image (`recipe-image.webp`) and a 600×600 cropped card thumbnail (`recipe-image-card.webp`) in `static/images/`, then moves the source image to `backup/original_images/`. Use the recipe-page `.webp` filename in both the metadata and recipe image Markdown; card pages use the derived thumbnail automatically.
 3. Build the project:
    ```bash
    ./build.sh
    ```
-   The build regenerates `content/index.md`, `content/all-recipes/index.md`, and all author listing pages before producing the committed HTML files under `docs/`. It automatically creates an author page when a recipe introduces a new author.
+   The build regenerates `content/index.md`, `content/all-recipes/index.md`, `content/authors/`, `content/categories/`, and their individual listing pages before producing the committed HTML files under `docs/`. It automatically creates author and category pages from recipe metadata.
 4. Optionally choose to run the local server, then open `http://localhost:8080/`.
 
 ## Contributing

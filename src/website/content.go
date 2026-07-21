@@ -17,13 +17,16 @@ const (
 	allRecipesTemplateFile = "all-recipes.md"
 	authorsTemplateFile    = "authors.md"
 	authorTemplateFile     = "author.md"
+	categoriesTemplateFile = "categories.md"
+	categoryTemplateFile   = "category.md"
 )
 
-// Recipe is the validated metadata, optimized image filenames, and public URL for one recipe source file.
+// Recipe is the validated metadata, categories, optimized image filenames, and public URL for one recipe source file.
 type Recipe struct {
 	Title      string
 	Author     string
 	AuthorSlug string
+	Categories []string
 	DateAdded  time.Time
 	Image      string
 	CardImage  string
@@ -31,7 +34,7 @@ type Recipe struct {
 }
 
 // GenerateContentIndexes builds the recipe listing Markdown files under contentDirPath from recipe metadata and content templates.
-// It validates recipe metadata, images, author slugs, and template placeholders before replacing generated pages.
+// It validates recipe metadata, images, author and category slugs, and template placeholders before replacing generated pages.
 func GenerateContentIndexes(contentDirPath string) error {
 	recipes, err := readRecipes(contentDirPath)
 	if err != nil {
@@ -55,8 +58,20 @@ func GenerateContentIndexes(contentDirPath string) error {
 	if err != nil {
 		return err
 	}
+	categoriesTemplate, err := readContentTemplate(templateDirPath, categoriesTemplateFile)
+	if err != nil {
+		return err
+	}
+	categoryTemplate, err := readContentTemplate(templateDirPath, categoryTemplateFile)
+	if err != nil {
+		return err
+	}
 
 	recipesByAuthor, authors, err := groupRecipesByAuthor(recipes)
+	if err != nil {
+		return err
+	}
+	recipesByCategory, categories, err := groupRecipesByCategory(recipes)
 	if err != nil {
 		return err
 	}
@@ -124,6 +139,33 @@ func GenerateContentIndexes(contentDirPath string) error {
 		}
 	}
 
+	categoriesPage, err := renderContentTemplate(categoriesTemplate, map[string]string{
+		"{{ Categories }}": renderCategoryCards(categories, recipesByCategory),
+	})
+	if err != nil {
+		return fmt.Errorf("failed to render categories page: %w", err)
+	}
+	if err := writeGeneratedContent(filepath.Join(contentDirPath, "categories", "index.md"), categoriesPage); err != nil {
+		return err
+	}
+
+	for _, category := range categories {
+		categoryRecipes := recipesByCategory[category]
+		sortRecipesByTitle(categoryRecipes)
+		categoryPage, err := renderContentTemplate(categoryTemplate, map[string]string{
+			"{{ Category }}":         html.EscapeString(category),
+			"{{ Category Recipes }}": renderRecipeGridCards(categoryRecipes),
+		})
+		if err != nil {
+			return fmt.Errorf("failed to render category page for %q: %w", category, err)
+		}
+
+		categoryPath := filepath.Join(contentDirPath, "categories", normalizeSlug(category), "index.md")
+		if err := writeGeneratedContent(categoryPath, categoryPage); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -158,7 +200,7 @@ func readRecipes(contentDirPath string) ([]Recipe, error) {
 	return recipes, nil
 }
 
-// parseRecipe reads one recipe file and validates all metadata required for generated recipe listings.
+// parseRecipe reads one recipe file and validates metadata, including optional categories, required for generated recipe listings.
 func parseRecipe(recipePath, recipeDirPath, staticImagesDirPath string) (Recipe, error) {
 	markdown, err := os.ReadFile(recipePath)
 	if err != nil {
@@ -183,6 +225,10 @@ func parseRecipe(recipePath, recipeDirPath, staticImagesDirPath string) (Recipe,
 		return Recipe{}, fmt.Errorf("recipe %q: %w", recipePath, err)
 	}
 	image, err := requiredMetadata(metadata, "image")
+	if err != nil {
+		return Recipe{}, fmt.Errorf("recipe %q: %w", recipePath, err)
+	}
+	categories, err := categoryMetadata(metadata)
 	if err != nil {
 		return Recipe{}, fmt.Errorf("recipe %q: %w", recipePath, err)
 	}
@@ -230,6 +276,7 @@ func parseRecipe(recipePath, recipeDirPath, staticImagesDirPath string) (Recipe,
 		Title:      title,
 		Author:     author,
 		AuthorSlug: authorSlug,
+		Categories: categories,
 		DateAdded:  parsedDate,
 		Image:      image,
 		CardImage:  cardImage,
@@ -283,6 +330,43 @@ func requiredMetadata(metadata map[string]string, field string) (string, error) 
 	return value, nil
 }
 
+// categoryMetadata returns optional categories from a YAML flow sequence and rejects invalid, duplicate, or unusable names.
+func categoryMetadata(metadata map[string]string) ([]string, error) {
+	value, exists := metadata["categories"]
+	if !exists {
+		return nil, nil
+	}
+
+	value = strings.TrimSpace(value)
+	if !strings.HasPrefix(value, "[") || !strings.HasSuffix(value, "]") {
+		return nil, errors.New("categories metadata must use a YAML flow sequence such as [Dessert, Holiday]")
+	}
+
+	values := strings.TrimSpace(value[1 : len(value)-1])
+	if values == "" {
+		return nil, nil
+	}
+
+	categories := strings.Split(values, ",")
+	seenCategories := make(map[string]struct{}, len(categories))
+	for index, category := range categories {
+		category = strings.Trim(strings.TrimSpace(category), "\"'")
+		if category == "" {
+			return nil, errors.New("categories metadata cannot contain an empty category")
+		}
+		if normalizeSlug(category) == "" {
+			return nil, fmt.Errorf("category %q cannot be converted to a URL slug", category)
+		}
+		if _, exists := seenCategories[category]; exists {
+			return nil, fmt.Errorf("duplicate category %q", category)
+		}
+
+		seenCategories[category] = struct{}{}
+		categories[index] = category
+	}
+	return categories, nil
+}
+
 // groupRecipesByAuthor groups recipes by their exact display name and rejects different names that would share a URL slug.
 func groupRecipesByAuthor(recipes []Recipe) (map[string][]Recipe, []string, error) {
 	recipesByAuthor := make(map[string][]Recipe)
@@ -305,6 +389,31 @@ func groupRecipesByAuthor(recipes []Recipe) (map[string][]Recipe, []string, erro
 	return recipesByAuthor, authors, nil
 }
 
+// groupRecipesByCategory groups recipes by category and rejects different category names that would share a URL slug.
+func groupRecipesByCategory(recipes []Recipe) (map[string][]Recipe, []string, error) {
+	recipesByCategory := make(map[string][]Recipe)
+	categoryNamesBySlug := make(map[string]string)
+	for _, recipe := range recipes {
+		for _, category := range recipe.Categories {
+			categorySlug := normalizeSlug(category)
+			if existingCategory, exists := categoryNamesBySlug[categorySlug]; exists && existingCategory != category {
+				return nil, nil, fmt.Errorf("categories %q and %q both use the URL slug %q", existingCategory, category, categorySlug)
+			}
+			categoryNamesBySlug[categorySlug] = category
+			recipesByCategory[category] = append(recipesByCategory[category], recipe)
+		}
+	}
+
+	categories := make([]string, 0, len(recipesByCategory))
+	for category := range recipesByCategory {
+		categories = append(categories, category)
+	}
+	sort.Slice(categories, func(left, right int) bool {
+		return strings.ToLower(categories[left]) < strings.ToLower(categories[right])
+	})
+	return recipesByCategory, categories, nil
+}
+
 // sortRecipesByTitle orders recipes by case-insensitive title, then author name, and finally URL for fully equal entries.
 func sortRecipesByTitle(recipes []Recipe) {
 	sort.Slice(recipes, func(left, right int) bool {
@@ -322,7 +431,7 @@ func sortRecipesByTitle(recipes []Recipe) {
 	})
 }
 
-// normalizeSlug converts a display name into the stable lowercase URL segment used for author pages.
+// normalizeSlug converts a display name into the stable lowercase URL segment used for author and category pages.
 func normalizeSlug(value string) string {
 	var slug strings.Builder
 	pendingSeparator := false
@@ -376,7 +485,7 @@ func writeGeneratedContent(path, content string) error {
 	return nil
 }
 
-// renderRecipeGridCards returns lazily loaded recipe-thumbnail links for the homepage and author-page grid layouts.
+// renderRecipeGridCards returns lazily loaded recipe-thumbnail links for the homepage, author-page, and category-page grid layouts.
 func renderRecipeGridCards(recipes []Recipe) string {
 	var cards strings.Builder
 	for _, recipe := range recipes {
@@ -413,6 +522,20 @@ func renderAuthorCards(authors []string) string {
 	var cards strings.Builder
 	for _, author := range authors {
 		fmt.Fprintf(&cards, "  <div class=\"col col-4\"><a class=\"card card-link\" href=\"/authors/%s/\"><div class=\"card-body\">%s</div></a></div>\n", normalizeSlug(author), html.EscapeString(author))
+	}
+	return strings.TrimSuffix(cards.String(), "\n")
+}
+
+// renderCategoryCards returns alphabetically ordered category links with their recipe counts for the categories directory.
+func renderCategoryCards(categories []string, recipesByCategory map[string][]Recipe) string {
+	var cards strings.Builder
+	for _, category := range categories {
+		recipeCount := len(recipesByCategory[category])
+		label := "recipes"
+		if recipeCount == 1 {
+			label = "recipe"
+		}
+		fmt.Fprintf(&cards, "  <div class=\"col col-4\"><a class=\"card card-link\" href=\"/categories/%s/\"><div class=\"card-body\">%s (%d %s)</div></a></div>\n", normalizeSlug(category), html.EscapeString(category), recipeCount, label)
 	}
 	return strings.TrimSuffix(cards.String(), "\n")
 }
