@@ -3,6 +3,7 @@ title: Pizza Meat Loaf
 author: Grandma Navin
 date_added: 2026-01-09
 image: pizza-meat-loaf.webp
+categories: [Main Dish]
 ---
 
 # Pizza Meat Loaf

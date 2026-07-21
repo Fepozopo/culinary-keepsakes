@@ -3,6 +3,7 @@ title: Major Coffee Rub
 author: Peet's Coffee
 date_added: 2026-07-17
 image: major-coffee-rub.webp
+categories: [Condiment, Coffee]
 ---
 
 # Major Coffee Rub

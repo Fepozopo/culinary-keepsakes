@@ -3,6 +3,7 @@ title: Chicken Enchilada
 author: Melissa Navin
 date_added: 2025-04-07
 image: chicken-enchilada.webp
+categories: [Main Dish, Mexican]
 ---
 
 # Chicken Enchilada

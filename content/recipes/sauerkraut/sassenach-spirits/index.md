@@ -3,6 +3,7 @@ title: Sauerkraut
 author: Sassenach Spirits
 date_added: 2026-07-19
 image: sauerkraut.webp
+categories: [Cocktail]
 ---
 
 # Sauerkraut
