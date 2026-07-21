@@ -3,6 +3,7 @@ title: Baklava
 author: Natalie Koive (Dillon)
 date_added: 2026-07-16
 image: baklava.webp
+categories: [Dessert, Holiday, Greek]
 ---
 
 # Baklava

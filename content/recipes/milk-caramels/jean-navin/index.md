@@ -3,6 +3,7 @@ title: Milk Caramels
 author: Jean Navin
 date_added: 2025-12-20
 image: milk-caramels.webp
+categories: [Dessert]
 ---
 
 # Milk Caramels

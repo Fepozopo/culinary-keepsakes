@@ -3,6 +3,7 @@ title: Coffee Ice Cream Sandwiches
 author: Peet's Coffee
 date_added: 2026-07-17
 image: coffee-ice-cream-sandwiches.webp
+categories: [Dessert, Coffee]
 ---
 
 # Coffee Ice Cream Sandwiches

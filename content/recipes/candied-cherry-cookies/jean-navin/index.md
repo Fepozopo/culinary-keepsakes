@@ -3,6 +3,7 @@ title: Candied Cherry Cookies
 author: Jean Navin
 date_added: 2025-04-08
 image: candied-cherry-cookies.webp
+categories: [Baked Good, Dessert, Holiday]
 ---
 
 # Candied Cherry Cookies

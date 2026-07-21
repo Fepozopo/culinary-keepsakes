@@ -3,6 +3,7 @@ title: Apple Juice Spice Cake
 author: Natalie Koive (Dillon)
 date_added: 2026-07-16
 image: apple-juice-spice-cake.webp
+categories: [Baked Good, Dessert]
 ---
 
 # Apple Juice Spice Cake

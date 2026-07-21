@@ -3,6 +3,7 @@ title: Cranachan
 author: Sassenach Spirits
 date_added: 2026-07-17
 image: cranachan.webp
+categories: [Dessert, Scottish]
 ---
 
 # Cranachan

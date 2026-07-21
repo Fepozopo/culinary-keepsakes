@@ -3,6 +3,7 @@ title: Ho Ho Bars
 author: Renee DuPrey
 date_added: 2026-01-09
 image: ho-ho-bars.webp
+categories: [Baked Good, Dessert]
 ---
 
 # Ho Ho Bars

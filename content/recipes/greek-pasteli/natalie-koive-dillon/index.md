@@ -3,6 +3,7 @@ title: Greek Pasteli
 author: Natalie Koive (Dillon)
 date_added: 2026-07-16
 image: greek-pasteli.webp
+categories: [Baked Good, Greek]
 ---
 
 # Greek Pasteli

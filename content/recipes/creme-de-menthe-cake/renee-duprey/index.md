@@ -3,6 +3,7 @@ title: Creme de Menthe Cake
 author: Renee DuPrey
 date_added: 2026-01-09
 image: creme-de-menthe-cake.webp
+categories: [Baked Good, Dessert]
 ---
 
 # Creme de Menthe Cake
