@@ -75,61 +75,60 @@
     overflow: visible;
 }
 
-/* Shrink standalone hero/image blocks on recipe pages and home page
-   Targets images that are inside a paragraph which is a direct child of
-   the content container. Allow them to scale down on small screens while
-   keeping a sensible max width on large viewports. */
-.container > div > p > img {
-    display: block;
-    margin: 0.6rem auto;
-    /* Constrain by both width and height while preserving aspect ratio. Use
+/* Size standalone and step images without letting them dominate the recipe page. */
+.container > div > p > img,
+.container > div > ol > li > p > img {
+  display: block;
+  margin: 0.6rem auto;
+  /* Constrain by both width and height while preserving aspect ratio. Use
      the smaller of the container width and 720px as the max width so
      images scale down on small screens but don't get enormous on desktop. */
-    width: auto;
-    max-width: min(720px, 100%);
-    max-height: 60vh; /* cap very tall images so they never dominate the viewport */
-    height: auto; /* preserve aspect ratio */
-    border-radius: 6px;
-    object-fit: contain;
+  width: auto;
+  max-width: min(720px, 100%);
+  max-height: 60vh; /* cap very tall images so they never dominate the viewport */
+  height: auto;     /* preserve aspect ratio */
+  border-radius: 6px;
+  object-fit: contain;
 }
 
 /* Consecutive Markdown images share one paragraph; render that paragraph as a responsive gallery. */
-.container > div > p:has(> img + img) {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-    align-items: start;
-    margin: 0.6rem auto;
-    max-width: min(720px, 100%);
+.container > div > p:has(> img + img),
+.container > div > ol > li > p:has(> img + img) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+  margin: 0.6rem auto;
+  max-width: min(720px, 100%);
 }
 
-.container > div > p:has(> img + img) > img {
-    display: block;
-    width: 100%;
-    max-width: none;
-    max-height: 60vh;
-    height: auto;
-    margin: 0;
-    border-radius: 6px;
-    object-fit: contain;
+.container > div > p:has(> img + img) > img,
+.container > div > ol > li > p:has(> img + img) > img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  max-height: 60vh;
+  height: auto;
+  margin: 0;
+  border-radius: 6px;
+  object-fit: contain;
 }
 
 @media (max-width: 480px) {
-    /* Preserve legibility on narrow screens by stacking gallery images. */
-    .container > div > p:has(> img + img) {
-        grid-template-columns: 1fr;
-        max-width: 92vw;
-    }
+  /* Preserve legibility on narrow screens by stacking gallery images. */
+  .container > div > p:has(> img + img),
+  .container > div > ol > li > p:has(> img + img) {
+    grid-template-columns: 1fr;
+    max-width: 92vw;
+  }
 
-    /* On very narrow screens, give standalone images breathing room from the viewport edge. */
-    .container > div > p > img {
-        max-width: 92vw;
-        max-height: 55vh;
-    }
+  /* On very narrow screens, give standalone images breathing room from the viewport edge. */
+  .container > div > p > img,
+  .container > div > ol > li > p > img { max-width: 92vw; max-height: 55vh; }
 
-    .container > div > p:has(> img + img) > img {
-        max-width: none;
-    }
+  .container > div > p:has(> img + img) > img,
+  .container > div > ol > li > p:has(> img + img) > img { max-width: none; }
+}
 }
 
 /* Author metadata styling */

@@ -11,6 +11,12 @@ import (
 
 type BlockType int
 
+// orderedListItemPattern recognizes a one-line ordered-list item and captures its ordinal and content.
+var orderedListItemPattern = regexp.MustCompile(`^(\d+)\.\s+(.+)$`)
+
+// markdownImagePattern recognizes an inline Markdown image.
+var markdownImagePattern = regexp.MustCompile(`!\[(.*?)\]\((.*?)\)`)
+
 const (
 	Paragraph BlockType = iota
 	Heading
@@ -276,7 +282,35 @@ func BlockToHTMLNode(block string) nodes.HTMLNode {
 	}
 }
 
-// MarkdownToHTMLNode converts a full markdown document into a single HTMLNode.
+// parseOrderedListItem extracts the number and content from a one-line ordered-list item.
+// It returns the item's ordinal, its content, and false when block is not a valid item.
+func parseOrderedListItem(block string) (int, string, bool) {
+	match := orderedListItemPattern.FindStringSubmatch(block)
+	if match == nil {
+		return 0, "", false
+	}
+
+	ordinal, err := strconv.Atoi(match[1])
+	if err != nil {
+		return 0, "", false
+	}
+
+	return ordinal, match[2], true
+}
+
+// isImageOnlyBlock reports whether block contains only Markdown image syntax and whitespace.
+// It returns true when the block has at least one image and no other meaningful content.
+func isImageOnlyBlock(block string) bool {
+	trimmedBlock := strings.TrimSpace(block)
+	if trimmedBlock == "" {
+		return false
+	}
+
+	return strings.TrimSpace(markdownImagePattern.ReplaceAllString(trimmedBlock, "")) == ""
+}
+
+// MarkdownToHTMLNode converts a full Markdown document into a single HTMLNode.
+// It keeps sequential ordered-list items in one list when image-only blocks appear between steps.
 func MarkdownToHTMLNode(markdown string) nodes.HTMLNode {
 	blocks := MarkdownToBlocks(markdown)
 	parentNode := &nodes.ParentNode{
@@ -284,10 +318,48 @@ func MarkdownToHTMLNode(markdown string) nodes.HTMLNode {
 		Children: []nodes.HTMLNode{},
 	}
 
-	for _, block := range blocks {
-		blockHTMLNode := BlockToHTMLNode(block)
-		parentNode.Children = append(parentNode.Children, blockHTMLNode)
+	var currentOrderedList *nodes.ParentNode
+	var currentListItem *nodes.ParentNode
+	nextOrdinal := 1
+	flushOrderedList := func() {
+		if currentOrderedList != nil {
+			parentNode.Children = append(parentNode.Children, currentOrderedList)
+			currentOrderedList = nil
+			currentListItem = nil
+			nextOrdinal = 1
+		}
 	}
 
+	for _, block := range blocks {
+		if ordinal, content, ok := parseOrderedListItem(block); ok {
+			if currentOrderedList == nil && ordinal == 1 {
+				currentOrderedList = &nodes.ParentNode{
+					Tag:      "ol",
+					Children: []nodes.HTMLNode{},
+				}
+			}
+
+			if currentOrderedList != nil && ordinal == nextOrdinal {
+				currentListItem = &nodes.ParentNode{
+					Tag:      "li",
+					Children: TextToChildren(content),
+				}
+				currentOrderedList.Children = append(currentOrderedList.Children, currentListItem)
+				nextOrdinal++
+				continue
+			}
+		}
+
+		if currentListItem != nil && isImageOnlyBlock(block) {
+			// Keep the image with the step it illustrates while preserving the ordered-list structure.
+			currentListItem.Children = append(currentListItem.Children, BlockToHTMLNode(block))
+			continue
+		}
+
+		flushOrderedList()
+		parentNode.Children = append(parentNode.Children, BlockToHTMLNode(block))
+	}
+
+	flushOrderedList()
 	return parentNode
 }

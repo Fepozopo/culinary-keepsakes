@@ -36,9 +36,9 @@ func TestMarkdownToBlocks(t *testing.T) {
 			name: "Markdown with leading/trailing whitespace",
 			input: `
             # This is a heading
-         
+
             This is a paragraph of text. It has some **bold** and *italic* words inside of it.
-            
+
             * This is the first list item in a list block
             * This is a list item
             * This is another list item
@@ -193,6 +193,22 @@ func TestBlockToHTMLNodeUnorderedList(t *testing.T) {
 	}
 }
 
+// TestMarkdownToHTMLNodeKeepsImagesWithOrderedSteps verifies that step images do not terminate an ordered list.
+func TestMarkdownToHTMLNodeKeepsImagesWithOrderedSteps(t *testing.T) {
+	markdown := "1. Prepare the peaches.\n\n![Prepared peaches](/images/peaches-01.webp)\n\n2. Roast the peaches.\n\n![Roasted peaches](/images/peaches-02.webp)"
+
+	html, err := MarkdownToHTMLNode(markdown).ToHTML()
+	if err != nil {
+		t.Fatalf("MarkdownToHTMLNode() returned an error: %v", err)
+	}
+
+	want := `<div><ol><li>Prepare the peaches.<p><img alt="Prepared peaches" src="/images/peaches-01.webp" /></p></li><li>Roast the peaches.<p><img alt="Roasted peaches" src="/images/peaches-02.webp" /></p></li></ol></div>`
+	if html != want {
+		t.Errorf("MarkdownToHTMLNode() = %q, want %q", html, want)
+	}
+}
+
+// TestMarkdownToHTMLNode converts headings, paragraphs, and unordered lists into HTML nodes.
 func TestMarkdownToHTMLNode(t *testing.T) {
 	markdown := "# Title\n\nThis is a **bold** paragraph.\n\n* Item 1\n* Item 2"
 	result := MarkdownToHTMLNode(markdown)
