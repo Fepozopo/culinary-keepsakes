@@ -293,4 +293,13 @@
       </div>
     </a>
   </div>
+  <div class="col col-4">
+    <a class="card card-link" href="/recipes/whisky-roasted-peaches/sassenach-spirits/">
+      <img src="/images/whisky-roasted-peaches-card.webp" alt="Whisky Roasted Peaches" loading="lazy" decoding="async">
+      <div class="card-body">
+        <div style="font-weight:bold;">Whisky Roasted Peaches</div>
+        <div class="author">Sassenach Spirits</div>
+      </div>
+    </a>
+  </div>
 </div>

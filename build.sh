@@ -39,7 +39,8 @@ while IFS= read -r -d '' FILE; do
     echo "Error creating recipe and card images for: $FILE"
     CONVERSION_FAILED=1
   fi
-done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" -o -name "*.webp" \) -print0)
+# Match extensions case-insensitively because supplied camera exports may use uppercase extensions.
+done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" \) -print0)
 
 if [ "$CONVERSION_FAILED" -ne 0 ]; then
   echo "Image processing failed; original files remain in $SOURCE_DIR."

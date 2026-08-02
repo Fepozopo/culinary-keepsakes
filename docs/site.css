@@ -1,72 +1,151 @@
 /* Minimal overrides for consistent card images */
 /* Make card images square and cover the area */
 .card img {
-  width: 100%;
-  height: 220px; /* uniform height for cards */
-  object-fit: cover;
-  display: block;
-  border-radius: 6px 6px 0 0;
+    width: 100%;
+    height: 220px; /* uniform height for cards */
+    object-fit: cover;
+    display: block;
+    border-radius: 6px 6px 0 0;
 }
 
-.card .card-body { padding: 0.6rem; }
+.card .card-body {
+    padding: 0.6rem;
+}
 
 /* Ensure card-link fills the column */
-.card-link { display: block; text-decoration: none; color: inherit; height: 100%; }
+.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
 
 /* Make the column cards stretch to equal height */
-.row { align-items: stretch; }
-.col { display: flex; }
-.col .card { display: flex; flex-direction: column; width: 100%; }
+.row {
+    align-items: stretch;
+}
+.col {
+    display: flex;
+}
+.col .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 /* Small screens: slightly shorter images */
 @media (max-width: 768px) {
-  .card img { height: 160px; }
+    .card img {
+        height: 160px;
+    }
 }
 
 /* Fix for markdown-generated stray <p> wrapping block HTML
    Some pages render <p><div> from the markdown converter; neutralize that
    so recipe-header and row blocks aren't treated as inline and don't
    cause layout clipping. */
-.container p { margin: 0; }
+.container p {
+    margin: 0;
+}
 .container p > .recipe-header,
-.container p > .row { display: block; margin: 0; }
-.container p > .row { margin-top: 1rem; }
+.container p > .row {
+    display: block;
+    margin: 0;
+}
+.container p > .row {
+    margin-top: 1rem;
+}
 
 /* Ensure author cards center and don't get clipped */
-.card .card-body { text-align: center; white-space: normal; overflow: visible; padding-left: 0.75rem; padding-right: 0.75rem; }
+.card .card-body {
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
 
 /* Prevent flex children from overflowing their containers (fix clipped text) */
-.col { min-width: 0; }
+.col {
+    min-width: 0;
+}
 
 /* Ensure card content isn't masked by overflow on ancestor elements */
-.card { overflow: visible; }
+.card {
+    overflow: visible;
+}
 
 /* Shrink standalone hero/image blocks on recipe pages and home page
    Targets images that are inside a paragraph which is a direct child of
    the content container. Allow them to scale down on small screens while
    keeping a sensible max width on large viewports. */
 .container > div > p > img {
-  display: block;
-  margin: 0.6rem auto;
-  /* Constrain by both width and height while preserving aspect ratio. Use
+    display: block;
+    margin: 0.6rem auto;
+    /* Constrain by both width and height while preserving aspect ratio. Use
      the smaller of the container width and 720px as the max width so
      images scale down on small screens but don't get enormous on desktop. */
-  width: auto;
-  max-width: min(720px, 100%);
-  max-height: 60vh; /* cap very tall images so they never dominate the viewport */
-  height: auto;     /* preserve aspect ratio */
-  border-radius: 6px;
-  object-fit: contain;
+    width: auto;
+    max-width: min(720px, 100%);
+    max-height: 60vh; /* cap very tall images so they never dominate the viewport */
+    height: auto; /* preserve aspect ratio */
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+/* Consecutive Markdown images share one paragraph; render that paragraph as a responsive gallery. */
+.container > div > p:has(> img + img) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: start;
+    margin: 0.6rem auto;
+    max-width: min(720px, 100%);
+}
+
+.container > div > p:has(> img + img) > img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    max-height: 60vh;
+    height: auto;
+    margin: 0;
+    border-radius: 6px;
+    object-fit: contain;
 }
 
 @media (max-width: 480px) {
-  /* On very narrow screens, give the image some breathing room from the viewport edge */
-  .container > div > p > img { max-width: 92vw; max-height: 55vh; }
+    /* Preserve legibility on narrow screens by stacking gallery images. */
+    .container > div > p:has(> img + img) {
+        grid-template-columns: 1fr;
+        max-width: 92vw;
+    }
+
+    /* On very narrow screens, give standalone images breathing room from the viewport edge. */
+    .container > div > p > img {
+        max-width: 92vw;
+        max-height: 55vh;
+    }
+
+    .container > div > p:has(> img + img) > img {
+        max-width: none;
+    }
 }
 
 /* Author metadata styling */
-.author { font-size: 0.95rem; margin-top: 0.25rem; }
-.author a { color: inherit; text-decoration: none; }
+.author {
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+.author a {
+    color: inherit;
+    text-decoration: none;
+}
 
 /* Subtitle headings used in listing pages */
-.subtitle { display:block; font-weight:700; margin-top:0.5rem; margin-bottom:0.5rem; }
+.subtitle {
+    display: block;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
