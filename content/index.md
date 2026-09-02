@@ -7,6 +7,11 @@ This is a collection of recipes that I have come across in my life. Some are my 
 <p class="subtitle">Most Recent Recipes</p>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.5em; margin-top: 2em; margin-bottom: 2em;">
+  <a href="/recipes/blueberry-buckle/sherri-hanke/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/blueberry-buckle-card.webp" alt="Sherri&#39;s Famous Blueberry Buckle" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Sherri&#39;s Famous Blueberry Buckle</div>
+    <div class="author">Sherri Hanke</div>
+  </a>
   <a href="/recipes/whisky-roasted-peaches/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/whisky-roasted-peaches-card.webp" alt="Whisky Roasted Peaches" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Whisky Roasted Peaches</div>
@@ -30,11 +35,6 @@ This is a collection of recipes that I have come across in my life. Some are my 
   <a href="/recipes/guiding-light/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/guiding-light-card.webp" alt="Guiding Light" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Guiding Light</div>
-    <div class="author">Sassenach Spirits</div>
-  </a>
-  <a href="/recipes/hidden-history/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
-    <img src="/images/hidden-history-card.webp" alt="Hidden History" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
-    <div style="margin-top: 0.5em; font-weight: bold;">Hidden History</div>
     <div class="author">Sassenach Spirits</div>
   </a>
 </div>

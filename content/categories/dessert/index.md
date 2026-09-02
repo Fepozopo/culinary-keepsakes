@@ -41,6 +41,11 @@
     <div style="margin-top: 0.5em; font-weight: bold;">Milk Caramels</div>
     <div class="author">Jean Navin</div>
   </a>
+  <a href="/recipes/blueberry-buckle/sherri-hanke/" style="text-align: center; text-decoration: none; color: inherit;">
+    <img src="/images/blueberry-buckle-card.webp" alt="Sherri&#39;s Famous Blueberry Buckle" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
+    <div style="margin-top: 0.5em; font-weight: bold;">Sherri&#39;s Famous Blueberry Buckle</div>
+    <div class="author">Sherri Hanke</div>
+  </a>
   <a href="/recipes/whisky-roasted-peaches/sassenach-spirits/" style="text-align: center; text-decoration: none; color: inherit;">
     <img src="/images/whisky-roasted-peaches-card.webp" alt="Whisky Roasted Peaches" loading="lazy" decoding="async" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; max-width: 300px; margin: 0 auto; display: block; border-radius: 8px;" />
     <div style="margin-top: 0.5em; font-weight: bold;">Whisky Roasted Peaches</div>

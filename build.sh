@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script processes PNG, JPEG, and WebP images into optimized WebP assets using ImageMagick.
+# This script processes PNG, JPEG, WebP, and HEIC images into optimized WebP assets using ImageMagick.
 # It also moves the original source images to a backup directory.
 
 # Source directory for the original images
@@ -40,7 +40,8 @@ while IFS= read -r -d '' FILE; do
     CONVERSION_FAILED=1
   fi
 # Match extensions case-insensitively because supplied camera exports may use uppercase extensions.
-done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" \) -print0)
+# ImageMagick's HEIC decoder normalizes camera HEIC files into the same WebP output pipeline as other sources.
+done < <(find "$SOURCE_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpeg" -o -iname "*.jpg" -o -iname "*.webp" -o -iname "*.heic" \) -print0)
 
 if [ "$CONVERSION_FAILED" -ne 0 ]; then
   echo "Image processing failed; original files remain in $SOURCE_DIR."
